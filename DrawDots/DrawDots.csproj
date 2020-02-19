@@ -69,8 +69,7 @@
     </Compile>
     <Compile Include="Models\Group.cs" />
     <Compile Include="Models\IElement.cs" />
-    <Compile Include="Models\Pair.cs" />
-    <Compile Include="Models\Point.cs" />
+    <Compile Include="Models\MyPoint.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="GraphicalForm.resx">

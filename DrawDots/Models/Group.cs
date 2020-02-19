@@ -6,14 +6,17 @@ using System.Threading.Tasks;
 
 namespace DrawDots.Models
 {
-    class Group
+    public class Group
     {
-        private List<IElement> elements;
+        public readonly List<IElement> elements;
 
         public Group() => elements = new List<IElement>();
 
         public Group(List<IElement> elements) => this.elements = elements;
 
-        internal List<IElement> Elements { get => elements; set => elements = value; }
+        public void Add(IElement element)
+        {
+            elements.Add(element);
+        }
     }
 }

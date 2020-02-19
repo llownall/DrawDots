@@ -18,7 +18,13 @@ namespace DrawDots
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
+            Console.WriteLine("123");
+
+            
+
             //Application.Run(new GraphicalForm());
         }
+
+        
     }
 }

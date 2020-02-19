@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace DrawDots.Models
 {
-    interface IElement
+    public interface IElement
     {
-        Pair<double, double> GetPos();
-
         double GetAngle();
     }
 }

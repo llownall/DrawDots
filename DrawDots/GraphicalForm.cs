@@ -7,15 +7,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DrawDots.Models;
 using SharpGL;
+using SharpGL.SceneGraph.Assets;
 
 namespace DrawDots
 {
     public partial class GraphicalForm : Form
     {
-        public GraphicalForm()
+        internal List<Group> Groups { get; set; }
+        internal int currentGroupIndex;
+
+        public GraphicalForm(List<Group> groups)
         {
+            Groups = groups;
+
+            Groups.Add(new Group());
+            currentGroupIndex = 0;
+
             InitializeComponent();
+            label1.Text += $"{Groups.Count} groups received";
         }
 
         private void openGLControl1_OpenGLDraw(object sender, SharpGL.RenderEventArgs args)
@@ -32,14 +43,18 @@ namespace DrawDots
             // Двигаем перо вглубь экрана
             gl.Translate(0.0f, 0.0f, -5.0f);
 
-            gl.Begin(OpenGL.GL_TRIANGLES);
+            gl.Begin(OpenGL.GL_POINTS);
 
             // Указываем цвет вершин
             gl.Color(1f, 1f, 1f);
 
-            gl.Vertex(-1f, -1f);
-            gl.Vertex(0f, 1f);
-            gl.Vertex(1f, -1f);
+            foreach (MyPoint point in Groups[currentGroupIndex].elements)
+            {
+                gl.Vertex(
+                    GetOGLCoordinate(point.Position.X, openGLControl1.Size.Width),
+                    GetOGLCoordinate(point.Position.Y, openGLControl1.Size.Height)
+                    );
+            }
 
             // Завершаем работу
             gl.End();
@@ -49,6 +64,28 @@ namespace DrawDots
         {
             if (e.CloseReason != CloseReason.FormOwnerClosing)
                 Owner.Close();
+        }
+
+        private double GetOGLCoordinate(int x, int size)
+        {
+            return -1f * size / 170 / 2 + 1f * x / 170;
+        }
+
+        private void openGLControl1_MouseClick(object sender, MouseEventArgs e)
+        {
+            MyPoint newPoint = new MyPoint(e.X, openGLControl1.Size.Height - e.Y);
+
+            string openGLx = GetOGLCoordinate(newPoint.Position.X, openGLControl1.Size.Width).ToString();
+            string openGLy = GetOGLCoordinate(newPoint.Position.Y, openGLControl1.Size.Height).ToString();
+
+            label1.Text = $"Debug Info:\n" +
+                $"sizez {openGLControl1.Size.Width} {openGLControl1.Size.Height}\n" +
+                $"x = {newPoint.Position.X}\n" +
+                $"y = {newPoint.Position.Y}\n" +
+                $"openGLx = {openGLx}\n" +
+                $"openGLy = {openGLy}";
+
+            Groups[currentGroupIndex].Add(newPoint);
         }
     }
 }
