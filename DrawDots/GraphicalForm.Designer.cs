@@ -30,13 +30,17 @@
         {
             this.openGLControl1 = new SharpGL.OpenGLControl();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.thicknessLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.openGLControl1)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // openGLControl1
@@ -58,6 +62,9 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.thicknessLabel);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.trackBar1);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.label2);
@@ -69,32 +76,24 @@
             this.panel1.Size = new System.Drawing.Size(160, 702);
             this.panel1.TabIndex = 1;
             // 
-            // label1
+            // trackBar1
             // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(0, 406);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(160, 296);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Debug Info:\r\n";
+            this.trackBar1.Location = new System.Drawing.Point(12, 287);
+            this.trackBar1.Minimum = 1;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(135, 45);
+            this.trackBar1.TabIndex = 5;
+            this.trackBar1.Value = 1;
+            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             // 
-            // comboBox1
+            // button2
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(15, 72);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(132, 21);
-            this.comboBox1.TabIndex = 1;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 18);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(82, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Выбор группы:";
+            this.button2.Location = new System.Drawing.Point(81, 43);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(66, 23);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "Удалить";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
@@ -105,14 +104,50 @@
             this.button1.Text = "Новая";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // label2
             // 
-            this.button2.Location = new System.Drawing.Point(81, 43);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(66, 23);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Удалить";
-            this.button2.UseVisualStyleBackColor = true;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 18);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(82, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Выбор группы:";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(15, 72);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(132, 21);
+            this.comboBox1.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(0, 406);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(160, 296);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Debug Info:\r\n";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(15, 268);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(84, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Толщина точек";
+            // 
+            // thicknessLabel
+            // 
+            this.thicknessLabel.AutoSize = true;
+            this.thicknessLabel.Location = new System.Drawing.Point(108, 267);
+            this.thicknessLabel.Name = "thicknessLabel";
+            this.thicknessLabel.Size = new System.Drawing.Size(13, 13);
+            this.thicknessLabel.TabIndex = 7;
+            this.thicknessLabel.Text = "1";
             // 
             // GraphicalForm
             // 
@@ -127,6 +162,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.openGLControl1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -140,5 +176,8 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.Label thicknessLabel;
+        private System.Windows.Forms.Label label3;
     }
 }

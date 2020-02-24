@@ -27,6 +27,8 @@ namespace DrawDots
 
             InitializeComponent();
             label1.Text += $"{Groups.Count} groups received";
+            thicknessLabel.Text = Groups[currentGroupIndex].groupThickness.ToString();
+            trackBar1.Value = Groups[currentGroupIndex].groupThickness;
         }
 
         private void openGLControl1_OpenGLDraw(object sender, SharpGL.RenderEventArgs args)
@@ -42,6 +44,7 @@ namespace DrawDots
 
             // Двигаем перо вглубь экрана
             gl.Translate(0.0f, 0.0f, -5.0f);
+            gl.PointSize(Groups[currentGroupIndex].groupThickness);
 
             gl.Begin(OpenGL.GL_POINTS);
 
@@ -87,5 +90,13 @@ namespace DrawDots
 
             Groups[currentGroupIndex].Add(newPoint);
         }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            int trackBarValue = trackBar1.Value;
+            thicknessLabel.Text = trackBar1.Value.ToString();
+            Groups[currentGroupIndex].setGroupThickness(trackBarValue);
+        }
+
     }
 }
