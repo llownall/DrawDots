@@ -17,14 +17,13 @@ namespace DrawDots
 
         public MainForm()
         {
-            Groups = new List<Group>();
             InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             Hide();
-            new GraphicalForm(Groups).Show(this);
+            new GraphicalForm(new List<Group> { new Group("Группа 1") }).Show(this);
         }
     }
 }
