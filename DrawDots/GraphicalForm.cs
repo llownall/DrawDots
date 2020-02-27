@@ -41,23 +41,25 @@ namespace DrawDots
 
             // Двигаем перо вглубь экрана
             gl.Translate(0.0f, 0.0f, -5.0f);
-            gl.PointSize(Groups[comboBox1.SelectedIndex].groupThickness);
 
-            gl.Begin(OpenGL.GL_POINTS);
-
-            // Указываем цвет вершин
-            gl.Color(1f, 1f, 1f);
-
-            foreach (MyPoint point in Groups[comboBox1.SelectedIndex].elements)
+            foreach (Group group in Groups)
             {
-                gl.Vertex(
-                    GetOGLCoordinate(point.Position.X, openGLControl1.Size.Width),
-                    GetOGLCoordinate(point.Position.Y, openGLControl1.Size.Height)
-                    );
-            }
+                gl.PointSize(group.groupThickness);
 
-            // Завершаем работу
-            gl.End();
+                gl.Begin(OpenGL.GL_POINTS);
+
+                // Указываем цвет вершин
+                gl.Color(1f, 1f, 1f);
+                foreach (MyPoint point in group.elements)
+                {
+                    gl.Vertex(
+                        GetOGLCoordinate(point.Position.X, openGLControl1.Size.Width),
+                        GetOGLCoordinate(point.Position.Y, openGLControl1.Size.Height)
+                        );
+                }
+                // Завершаем работу
+                gl.End();
+            }
         }
 
         private void GraphicalForm_FormClosed(object sender, FormClosedEventArgs e)
