@@ -30,14 +30,14 @@
         {
             this.openGLControl1 = new SharpGL.OpenGLControl();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.thicknessLabel = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.thicknessLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.openGLControl1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
@@ -76,6 +76,24 @@
             this.panel1.Size = new System.Drawing.Size(160, 702);
             this.panel1.TabIndex = 1;
             // 
+            // thicknessLabel
+            // 
+            this.thicknessLabel.AutoSize = true;
+            this.thicknessLabel.Location = new System.Drawing.Point(108, 267);
+            this.thicknessLabel.Name = "thicknessLabel";
+            this.thicknessLabel.Size = new System.Drawing.Size(13, 13);
+            this.thicknessLabel.TabIndex = 7;
+            this.thicknessLabel.Text = "1";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(15, 268);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(84, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Толщина точек";
+            // 
             // trackBar1
             // 
             this.trackBar1.Location = new System.Drawing.Point(12, 287);
@@ -88,21 +106,23 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(81, 43);
+            this.button2.Location = new System.Drawing.Point(81, 80);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(66, 23);
             this.button2.TabIndex = 4;
             this.button2.Text = "Удалить";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(15, 43);
+            this.button1.Location = new System.Drawing.Point(15, 80);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(60, 23);
             this.button1.TabIndex = 3;
             this.button1.Text = "Новая";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label2
             // 
@@ -116,10 +136,11 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(15, 72);
+            this.comboBox1.Location = new System.Drawing.Point(15, 48);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(132, 21);
             this.comboBox1.TabIndex = 1;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -130,24 +151,6 @@
             this.label1.Size = new System.Drawing.Size(160, 296);
             this.label1.TabIndex = 0;
             this.label1.Text = "Debug Info:\r\n";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 268);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(84, 13);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Толщина точек";
-            // 
-            // thicknessLabel
-            // 
-            this.thicknessLabel.AutoSize = true;
-            this.thicknessLabel.Location = new System.Drawing.Point(108, 267);
-            this.thicknessLabel.Name = "thicknessLabel";
-            this.thicknessLabel.Size = new System.Drawing.Size(13, 13);
-            this.thicknessLabel.TabIndex = 7;
-            this.thicknessLabel.Text = "1";
             // 
             // GraphicalForm
             // 

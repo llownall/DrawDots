@@ -10,10 +10,19 @@ namespace DrawDots.Models
     {
         public readonly List<IElement> elements;
         public int groupThickness { get; private set; } = 1;
+        public string name { get; private set; }
 
-        public Group() => elements = new List<IElement>();
+        public Group(string name)
+        {
+            this.name = name;
+            elements = new List<IElement>();
+        }
 
-        public Group(List<IElement> elements) => this.elements = elements;
+        public Group(string name, List<IElement> elements)
+        {
+            this.name = name;
+            this.elements = elements;
+        }
 
         public void Add(IElement element)
         {
@@ -23,6 +32,16 @@ namespace DrawDots.Models
         public void setGroupThickness(int thickness)
         {
             groupThickness = thickness;
+        }
+
+        public int getNumberOfGroup()
+        {
+            return int.Parse(name.Split()[1]);
+        }
+
+        public override string ToString()
+        {
+            return name;
         }
     }
 }

@@ -16,19 +16,16 @@ namespace DrawDots
     public partial class GraphicalForm : Form
     {
         internal List<Group> Groups { get; set; }
-        internal int currentGroupIndex;
 
         public GraphicalForm(List<Group> groups)
         {
             Groups = groups;
-
-            Groups.Add(new Group());
-            currentGroupIndex = 0;
-
             InitializeComponent();
             label1.Text += $"{Groups.Count} groups received";
-            thicknessLabel.Text = Groups[currentGroupIndex].groupThickness.ToString();
-            trackBar1.Value = Groups[currentGroupIndex].groupThickness;
+            updateComboBox();
+            comboBox1.SelectedIndex = 0;
+            thicknessLabel.Text = Groups[comboBox1.SelectedIndex].groupThickness.ToString();
+            trackBar1.Value = Groups[comboBox1.SelectedIndex].groupThickness;
         }
 
         private void openGLControl1_OpenGLDraw(object sender, SharpGL.RenderEventArgs args)
@@ -44,23 +41,25 @@ namespace DrawDots
 
             // Двигаем перо вглубь экрана
             gl.Translate(0.0f, 0.0f, -5.0f);
-            gl.PointSize(Groups[currentGroupIndex].groupThickness);
 
-            gl.Begin(OpenGL.GL_POINTS);
-
-            // Указываем цвет вершин
-            gl.Color(1f, 1f, 1f);
-
-            foreach (MyPoint point in Groups[currentGroupIndex].elements)
+            foreach (Group group in Groups)
             {
-                gl.Vertex(
-                    GetOGLCoordinate(point.Position.X, openGLControl1.Size.Width),
-                    GetOGLCoordinate(point.Position.Y, openGLControl1.Size.Height)
-                    );
-            }
+                gl.PointSize(group.groupThickness);
 
-            // Завершаем работу
-            gl.End();
+                gl.Begin(OpenGL.GL_POINTS);
+
+                // Указываем цвет вершин
+                gl.Color(1f, 1f, 1f);
+                foreach (MyPoint point in group.elements)
+                {
+                    gl.Vertex(
+                        GetOGLCoordinate(point.Position.X, openGLControl1.Size.Width),
+                        GetOGLCoordinate(point.Position.Y, openGLControl1.Size.Height)
+                        );
+                }
+                // Завершаем работу
+                gl.End();
+            }
         }
 
         private void GraphicalForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -88,15 +87,43 @@ namespace DrawDots
                 $"openGLx = {openGLx}\n" +
                 $"openGLy = {openGLy}";
 
-            Groups[currentGroupIndex].Add(newPoint);
+            Groups[comboBox1.SelectedIndex].Add(newPoint);
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
             int trackBarValue = trackBar1.Value;
             thicknessLabel.Text = trackBar1.Value.ToString();
-            Groups[currentGroupIndex].setGroupThickness(trackBarValue);
+            Groups[comboBox1.SelectedIndex].setGroupThickness(trackBarValue);
         }
 
+        private void updateComboBox()
+        {
+            comboBox1.Items.Clear();
+            comboBox1.Items.AddRange(Groups.ToArray());
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            thicknessLabel.Text = Groups[comboBox1.SelectedIndex].groupThickness.ToString();
+            trackBar1.Value = Groups[comboBox1.SelectedIndex].groupThickness;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Groups.Add(new Group($"Группа {Groups.Last().getNumberOfGroup() + 1}"));
+            updateComboBox();
+            comboBox1.SelectedIndex = Groups.Count - 1;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (Groups.Count > 1)
+            {
+                Groups.RemoveAt(comboBox1.SelectedIndex);
+                updateComboBox();
+                comboBox1.SelectedIndex = Groups.Count - 1;
+            }
+        }
     }
 }
