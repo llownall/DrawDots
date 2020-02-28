@@ -42,13 +42,13 @@ namespace DrawDots
             // Двигаем перо вглубь экрана
             gl.Translate(0.0f, 0.0f, -5.0f);
 
-            for (int i = 0; i < Groups.Count; i++)
+            foreach (Group group in Groups)
             {
-                gl.PointSize(Groups[i].groupThickness);
+                gl.PointSize(group.groupThickness);
 
                 gl.Begin(OpenGL.GL_POINTS);
 
-                if (i == comboBoxGroups.SelectedIndex)
+                if (group == comboBoxGroups.SelectedItem)
                 {
                     gl.Color(0, 1f, 0);
                 }
@@ -56,7 +56,7 @@ namespace DrawDots
                 {
                     gl.Color(1f, 1f, 1f);
                 }
-                foreach (MyPoint point in Groups[i].elements)
+                foreach (MyPoint point in group.elements)
                 {
                     gl.Vertex(
                         GetOGLCoordinate(point.Position.X, openGLWindow.Size.Width),
