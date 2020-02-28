@@ -9,7 +9,7 @@ namespace DrawDots.Models
     public class Group
     {
         public readonly List<IElement> elements;
-        public int groupThickness { get; private set; } = 1;
+        public int groupThickness { get; private set; } = 5;
         public string name { get; private set; }
 
         public Group(string name)
