@@ -109,11 +109,14 @@
             // trackBarPointThickness
             // 
             this.trackBarPointThickness.Location = new System.Drawing.Point(12, 287);
-            this.trackBarPointThickness.Minimum = 1;
+            this.trackBarPointThickness.Maximum = 20;
+            this.trackBarPointThickness.Minimum = 5;
             this.trackBarPointThickness.Name = "trackBarPointThickness";
             this.trackBarPointThickness.Size = new System.Drawing.Size(135, 45);
-            this.trackBarPointThickness.TabIndex = 5;
-            this.trackBarPointThickness.Value = 1;
+            this.trackBarPointThickness.SmallChange = 3;
+            this.trackBarPointThickness.TabIndex = 3;
+            this.trackBarPointThickness.TickFrequency = 3;
+            this.trackBarPointThickness.Value = 5;
             this.trackBarPointThickness.Scroll += new System.EventHandler(this.trackBarPointThickness_Scroll);
             // 
             // buttonDeleteGroup
