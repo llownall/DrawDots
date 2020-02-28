@@ -17,6 +17,11 @@ namespace DrawDots.Models
             Position.Y = y;
         }
 
+        public bool isPointed(MyPoint mouseClick, double radius)
+        {
+            return Math.Abs(Position.X - mouseClick.Position.X) <= radius && 
+                Math.Abs(Position.Y - mouseClick.Position.Y) <= radius;
+        }
 
         public double GetAngle() => 0;
     }

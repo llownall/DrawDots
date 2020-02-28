@@ -21,17 +21,17 @@ namespace DrawDots
         {
             Groups = groups;
             InitializeComponent();
-            label1.Text += $"{Groups.Count} groups received";
+            debugInfo.Text += $"{Groups.Count} groups received";
             updateComboBox();
-            comboBox1.SelectedIndex = 0;
-            thicknessLabel.Text = Groups[comboBox1.SelectedIndex].groupThickness.ToString();
-            trackBar1.Value = Groups[comboBox1.SelectedIndex].groupThickness;
+            comboBoxGroups.SelectedIndex = 0;
+            labelPointThicknessValue.Text = Groups[comboBoxGroups.SelectedIndex].groupThickness.ToString();
+            trackBarPointThickness.Value = Groups[comboBoxGroups.SelectedIndex].groupThickness;
         }
 
-        private void openGLControl1_OpenGLDraw(object sender, SharpGL.RenderEventArgs args)
+        private void openGLWindow_OpenGLDraw(object sender, SharpGL.RenderEventArgs args)
         {
             // Создаем экземпляр
-            OpenGL gl = this.openGLControl1.OpenGL;
+            OpenGL gl = this.openGLWindow.OpenGL;
 
             // Очистка экрана и буфера глубин
             gl.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT);
@@ -48,16 +48,21 @@ namespace DrawDots
 
                 gl.Begin(OpenGL.GL_POINTS);
 
-                // Указываем цвет вершин
-                gl.Color(1f, 1f, 1f);
+                if (group == comboBoxGroups.SelectedItem)
+                {
+                    gl.Color(0, 1f, 0);
+                }
+                else
+                {
+                    gl.Color(1f, 1f, 1f);
+                }
                 foreach (MyPoint point in group.elements)
                 {
                     gl.Vertex(
-                        GetOGLCoordinate(point.Position.X, openGLControl1.Size.Width),
-                        GetOGLCoordinate(point.Position.Y, openGLControl1.Size.Height)
+                        GetOGLCoordinate(point.Position.X, openGLWindow.Size.Width),
+                        GetOGLCoordinate(point.Position.Y, openGLWindow.Size.Height)
                         );
                 }
-                // Завершаем работу
                 gl.End();
             }
         }
@@ -73,57 +78,75 @@ namespace DrawDots
             return -1f * size / 170 / 2 + 1f * x / 170;
         }
 
-        private void openGLControl1_MouseClick(object sender, MouseEventArgs e)
+        private void openGLWindow_MouseClick(object sender, MouseEventArgs e)
         {
-            MyPoint newPoint = new MyPoint(e.X, openGLControl1.Size.Height - e.Y);
+            MyPoint newPoint = new MyPoint(e.X, openGLWindow.Size.Height - e.Y);
 
-            string openGLx = GetOGLCoordinate(newPoint.Position.X, openGLControl1.Size.Width).ToString();
-            string openGLy = GetOGLCoordinate(newPoint.Position.Y, openGLControl1.Size.Height).ToString();
+            string openGLx = GetOGLCoordinate(newPoint.Position.X, openGLWindow.Size.Width).ToString();
+            string openGLy = GetOGLCoordinate(newPoint.Position.Y, openGLWindow.Size.Height).ToString();
 
-            label1.Text = $"Debug Info:\n" +
-                $"sizez {openGLControl1.Size.Width} {openGLControl1.Size.Height}\n" +
+            debugInfo.Text = $"Debug Info:\n" +
+                $"sizez {openGLWindow.Size.Width} {openGLWindow.Size.Height}\n" +
                 $"x = {newPoint.Position.X}\n" +
                 $"y = {newPoint.Position.Y}\n" +
                 $"openGLx = {openGLx}\n" +
                 $"openGLy = {openGLy}";
 
-            Groups[comboBox1.SelectedIndex].Add(newPoint);
+            if (checkBoxDeletePointMode.Checked)
+            {
+                foreach (MyPoint point in Groups[comboBoxGroups.SelectedIndex].elements)
+                {
+                    if (point.isPointed(newPoint, Groups[comboBoxGroups.SelectedIndex].groupThickness / 2))
+                    {
+                        Groups[comboBoxGroups.SelectedIndex].elements.Remove(point);
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                Groups[comboBoxGroups.SelectedIndex].elements.Add(newPoint);
+            }
         }
 
-        private void trackBar1_Scroll(object sender, EventArgs e)
+        private void trackBarPointThickness_Scroll(object sender, EventArgs e)
         {
-            int trackBarValue = trackBar1.Value;
-            thicknessLabel.Text = trackBar1.Value.ToString();
-            Groups[comboBox1.SelectedIndex].setGroupThickness(trackBarValue);
+            int trackBarValue = trackBarPointThickness.Value;
+            labelPointThicknessValue.Text = trackBarPointThickness.Value.ToString();
+            Groups[comboBoxGroups.SelectedIndex].setGroupThickness(trackBarValue);
         }
 
         private void updateComboBox()
         {
-            comboBox1.Items.Clear();
-            comboBox1.Items.AddRange(Groups.ToArray());
+            comboBoxGroups.Items.Clear();
+            comboBoxGroups.Items.AddRange(Groups.ToArray());
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBoxGroups_SelectedIndexChanged(object sender, EventArgs e)
         {
-            thicknessLabel.Text = Groups[comboBox1.SelectedIndex].groupThickness.ToString();
-            trackBar1.Value = Groups[comboBox1.SelectedIndex].groupThickness;
+            labelPointThicknessValue.Text = Groups[comboBoxGroups.SelectedIndex].groupThickness.ToString();
+            trackBarPointThickness.Value = Groups[comboBoxGroups.SelectedIndex].groupThickness;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonNewGroup_Click(object sender, EventArgs e)
         {
             Groups.Add(new Group($"Группа {Groups.Last().getNumberOfGroup() + 1}"));
             updateComboBox();
-            comboBox1.SelectedIndex = Groups.Count - 1;
+            comboBoxGroups.SelectedIndex = Groups.Count - 1;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void buttonDeleteGroup_Click(object sender, EventArgs e)
         {
             if (Groups.Count > 1)
             {
-                Groups.RemoveAt(comboBox1.SelectedIndex);
-                updateComboBox();
-                comboBox1.SelectedIndex = Groups.Count - 1;
+                Groups.RemoveAt(comboBoxGroups.SelectedIndex);
             }
+            else
+            {
+                Groups = new List<Group> { new Group("Группа 1") };
+            }
+            updateComboBox();
+            comboBoxGroups.SelectedIndex = 0;
         }
     }
 }
