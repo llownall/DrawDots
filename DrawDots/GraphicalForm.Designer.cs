@@ -28,159 +28,172 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.openGLControl1 = new SharpGL.OpenGLControl();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.thicknessLabel = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.openGLControl1)).BeginInit();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            this.openGLWindow = new SharpGL.OpenGLControl();
+            this.leftPanel = new System.Windows.Forms.Panel();
+            this.checkBoxDeletePointMode = new System.Windows.Forms.CheckBox();
+            this.labelPointThicknessValue = new System.Windows.Forms.Label();
+            this.labelPointThickness = new System.Windows.Forms.Label();
+            this.trackBarPointThickness = new System.Windows.Forms.TrackBar();
+            this.buttonDeleteGroup = new System.Windows.Forms.Button();
+            this.buttonNewGroup = new System.Windows.Forms.Button();
+            this.labelChooseGroup = new System.Windows.Forms.Label();
+            this.comboBoxGroups = new System.Windows.Forms.ComboBox();
+            this.debugInfo = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.openGLWindow)).BeginInit();
+            this.leftPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarPointThickness)).BeginInit();
             this.SuspendLayout();
             // 
-            // openGLControl1
+            // openGLWindow
             // 
-            this.openGLControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.openGLWindow.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.openGLControl1.DrawFPS = true;
-            this.openGLControl1.FrameRate = 30;
-            this.openGLControl1.Location = new System.Drawing.Point(166, 0);
-            this.openGLControl1.Name = "openGLControl1";
-            this.openGLControl1.OpenGLVersion = SharpGL.Version.OpenGLVersion.OpenGL2_1;
-            this.openGLControl1.RenderContextType = SharpGL.RenderContextType.DIBSection;
-            this.openGLControl1.RenderTrigger = SharpGL.RenderTrigger.TimerBased;
-            this.openGLControl1.Size = new System.Drawing.Size(939, 702);
-            this.openGLControl1.TabIndex = 0;
-            this.openGLControl1.OpenGLDraw += new SharpGL.RenderEventHandler(this.openGLControl1_OpenGLDraw);
-            this.openGLControl1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.openGLControl1_MouseClick);
+            this.openGLWindow.DrawFPS = true;
+            this.openGLWindow.FrameRate = 30;
+            this.openGLWindow.Location = new System.Drawing.Point(166, 0);
+            this.openGLWindow.Name = "openGLWindow";
+            this.openGLWindow.OpenGLVersion = SharpGL.Version.OpenGLVersion.OpenGL2_1;
+            this.openGLWindow.RenderContextType = SharpGL.RenderContextType.DIBSection;
+            this.openGLWindow.RenderTrigger = SharpGL.RenderTrigger.TimerBased;
+            this.openGLWindow.Size = new System.Drawing.Size(939, 702);
+            this.openGLWindow.TabIndex = 0;
+            this.openGLWindow.OpenGLDraw += new SharpGL.RenderEventHandler(this.openGLWindow_OpenGLDraw);
+            this.openGLWindow.MouseClick += new System.Windows.Forms.MouseEventHandler(this.openGLWindow_MouseClick);
             // 
-            // panel1
+            // leftPanel
             // 
-            this.panel1.Controls.Add(this.thicknessLabel);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.trackBar1);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.comboBox1);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(160, 702);
-            this.panel1.TabIndex = 1;
+            this.leftPanel.Controls.Add(this.checkBoxDeletePointMode);
+            this.leftPanel.Controls.Add(this.labelPointThicknessValue);
+            this.leftPanel.Controls.Add(this.labelPointThickness);
+            this.leftPanel.Controls.Add(this.trackBarPointThickness);
+            this.leftPanel.Controls.Add(this.buttonDeleteGroup);
+            this.leftPanel.Controls.Add(this.buttonNewGroup);
+            this.leftPanel.Controls.Add(this.labelChooseGroup);
+            this.leftPanel.Controls.Add(this.comboBoxGroups);
+            this.leftPanel.Controls.Add(this.debugInfo);
+            this.leftPanel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.leftPanel.Location = new System.Drawing.Point(0, 0);
+            this.leftPanel.Name = "leftPanel";
+            this.leftPanel.Size = new System.Drawing.Size(160, 702);
+            this.leftPanel.TabIndex = 1;
             // 
-            // thicknessLabel
+            // checkBoxDeletePointMode
             // 
-            this.thicknessLabel.AutoSize = true;
-            this.thicknessLabel.Location = new System.Drawing.Point(108, 267);
-            this.thicknessLabel.Name = "thicknessLabel";
-            this.thicknessLabel.Size = new System.Drawing.Size(13, 13);
-            this.thicknessLabel.TabIndex = 7;
-            this.thicknessLabel.Text = "1";
+            this.checkBoxDeletePointMode.AutoSize = true;
+            this.checkBoxDeletePointMode.Location = new System.Drawing.Point(15, 123);
+            this.checkBoxDeletePointMode.Name = "checkBoxDeletePointMode";
+            this.checkBoxDeletePointMode.Size = new System.Drawing.Size(107, 17);
+            this.checkBoxDeletePointMode.TabIndex = 8;
+            this.checkBoxDeletePointMode.Text = "Удаление точек";
+            this.checkBoxDeletePointMode.UseVisualStyleBackColor = true;
             // 
-            // label3
+            // labelPointThicknessValue
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 268);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(84, 13);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Толщина точек";
+            this.labelPointThicknessValue.AutoSize = true;
+            this.labelPointThicknessValue.Location = new System.Drawing.Point(108, 267);
+            this.labelPointThicknessValue.Name = "labelPointThicknessValue";
+            this.labelPointThicknessValue.Size = new System.Drawing.Size(13, 13);
+            this.labelPointThicknessValue.TabIndex = 7;
+            this.labelPointThicknessValue.Text = "1";
             // 
-            // trackBar1
+            // labelPointThickness
             // 
-            this.trackBar1.Location = new System.Drawing.Point(12, 287);
-            this.trackBar1.Minimum = 1;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(135, 45);
-            this.trackBar1.TabIndex = 5;
-            this.trackBar1.Value = 1;
-            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            this.labelPointThickness.AutoSize = true;
+            this.labelPointThickness.Location = new System.Drawing.Point(15, 268);
+            this.labelPointThickness.Name = "labelPointThickness";
+            this.labelPointThickness.Size = new System.Drawing.Size(84, 13);
+            this.labelPointThickness.TabIndex = 6;
+            this.labelPointThickness.Text = "Толщина точек";
             // 
-            // button2
+            // trackBarPointThickness
             // 
-            this.button2.Location = new System.Drawing.Point(81, 80);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(66, 23);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Удалить";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.trackBarPointThickness.Location = new System.Drawing.Point(12, 287);
+            this.trackBarPointThickness.Minimum = 1;
+            this.trackBarPointThickness.Name = "trackBarPointThickness";
+            this.trackBarPointThickness.Size = new System.Drawing.Size(135, 45);
+            this.trackBarPointThickness.TabIndex = 5;
+            this.trackBarPointThickness.Value = 1;
+            this.trackBarPointThickness.Scroll += new System.EventHandler(this.trackBarPointThickness_Scroll);
             // 
-            // button1
+            // buttonDeleteGroup
             // 
-            this.button1.Location = new System.Drawing.Point(15, 80);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(60, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Новая";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonDeleteGroup.Location = new System.Drawing.Point(81, 80);
+            this.buttonDeleteGroup.Name = "buttonDeleteGroup";
+            this.buttonDeleteGroup.Size = new System.Drawing.Size(66, 23);
+            this.buttonDeleteGroup.TabIndex = 4;
+            this.buttonDeleteGroup.Text = "Удалить";
+            this.buttonDeleteGroup.UseVisualStyleBackColor = true;
+            this.buttonDeleteGroup.Click += new System.EventHandler(this.buttonDeleteGroup_Click);
             // 
-            // label2
+            // buttonNewGroup
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 18);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(82, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Выбор группы:";
+            this.buttonNewGroup.Location = new System.Drawing.Point(15, 80);
+            this.buttonNewGroup.Name = "buttonNewGroup";
+            this.buttonNewGroup.Size = new System.Drawing.Size(60, 23);
+            this.buttonNewGroup.TabIndex = 3;
+            this.buttonNewGroup.Text = "Новая";
+            this.buttonNewGroup.UseVisualStyleBackColor = true;
+            this.buttonNewGroup.Click += new System.EventHandler(this.buttonNewGroup_Click);
             // 
-            // comboBox1
+            // labelChooseGroup
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(15, 48);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(132, 21);
-            this.comboBox1.TabIndex = 1;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.labelChooseGroup.AutoSize = true;
+            this.labelChooseGroup.Location = new System.Drawing.Point(12, 18);
+            this.labelChooseGroup.Name = "labelChooseGroup";
+            this.labelChooseGroup.Size = new System.Drawing.Size(82, 13);
+            this.labelChooseGroup.TabIndex = 2;
+            this.labelChooseGroup.Text = "Выбор группы:";
             // 
-            // label1
+            // comboBoxGroups
             // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(0, 406);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(160, 296);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Debug Info:\r\n";
+            this.comboBoxGroups.FormattingEnabled = true;
+            this.comboBoxGroups.Location = new System.Drawing.Point(15, 48);
+            this.comboBoxGroups.Name = "comboBoxGroups";
+            this.comboBoxGroups.Size = new System.Drawing.Size(132, 21);
+            this.comboBoxGroups.TabIndex = 1;
+            this.comboBoxGroups.SelectedIndexChanged += new System.EventHandler(this.comboBoxGroups_SelectedIndexChanged);
+            // 
+            // debugInfo
+            // 
+            this.debugInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.debugInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.debugInfo.Location = new System.Drawing.Point(0, 406);
+            this.debugInfo.Name = "debugInfo";
+            this.debugInfo.Size = new System.Drawing.Size(160, 296);
+            this.debugInfo.TabIndex = 0;
+            this.debugInfo.Text = "Debug Info:\r\n";
             // 
             // GraphicalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1105, 702);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.openGLControl1);
+            this.Controls.Add(this.leftPanel);
+            this.Controls.Add(this.openGLWindow);
             this.Name = "GraphicalForm";
             this.Text = "GraphicalForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.GraphicalForm_FormClosed);
-            ((System.ComponentModel.ISupportInitialize)(this.openGLControl1)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.openGLWindow)).EndInit();
+            this.leftPanel.ResumeLayout(false);
+            this.leftPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarPointThickness)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private SharpGL.OpenGLControl openGLControl1;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TrackBar trackBar1;
-        private System.Windows.Forms.Label thicknessLabel;
-        private System.Windows.Forms.Label label3;
+        private SharpGL.OpenGLControl openGLWindow;
+        private System.Windows.Forms.Panel leftPanel;
+        private System.Windows.Forms.Label debugInfo;
+        private System.Windows.Forms.Label labelChooseGroup;
+        private System.Windows.Forms.ComboBox comboBoxGroups;
+        private System.Windows.Forms.Button buttonDeleteGroup;
+        private System.Windows.Forms.Button buttonNewGroup;
+        private System.Windows.Forms.TrackBar trackBarPointThickness;
+        private System.Windows.Forms.Label labelPointThicknessValue;
+        private System.Windows.Forms.Label labelPointThickness;
+        private System.Windows.Forms.CheckBox checkBoxDeletePointMode;
     }
 }

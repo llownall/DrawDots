@@ -28,63 +28,63 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.panel1.SuspendLayout();
+            this.panelBackground = new System.Windows.Forms.Panel();
+            this.buttonLoadPicture = new System.Windows.Forms.Button();
+            this.buttonNewPicture = new System.Windows.Forms.Button();
+            this.panelBackground.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
+            // panelBackground
             // 
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(418, 94);
-            this.panel1.TabIndex = 0;
+            this.panelBackground.Controls.Add(this.buttonLoadPicture);
+            this.panelBackground.Controls.Add(this.buttonNewPicture);
+            this.panelBackground.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelBackground.Location = new System.Drawing.Point(0, 0);
+            this.panelBackground.Name = "panelBackground";
+            this.panelBackground.Size = new System.Drawing.Size(418, 94);
+            this.panelBackground.TabIndex = 0;
             // 
-            // button2
+            // buttonLoadPicture
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(216, 12);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(190, 70);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Загрузить рисунок";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonLoadPicture.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonLoadPicture.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonLoadPicture.Location = new System.Drawing.Point(216, 12);
+            this.buttonLoadPicture.Name = "buttonLoadPicture";
+            this.buttonLoadPicture.Size = new System.Drawing.Size(190, 70);
+            this.buttonLoadPicture.TabIndex = 1;
+            this.buttonLoadPicture.Text = "Загрузить рисунок";
+            this.buttonLoadPicture.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // buttonNewPicture
             // 
-            this.button1.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(12, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(190, 70);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Новый рисунок";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonNewPicture.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonNewPicture.Location = new System.Drawing.Point(12, 12);
+            this.buttonNewPicture.Name = "buttonNewPicture";
+            this.buttonNewPicture.Size = new System.Drawing.Size(190, 70);
+            this.buttonNewPicture.TabIndex = 0;
+            this.buttonNewPicture.Text = "Новый рисунок";
+            this.buttonNewPicture.UseVisualStyleBackColor = true;
+            this.buttonNewPicture.Click += new System.EventHandler(this.buttonNewPicture_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(418, 94);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelBackground);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "MainForm";
             this.Text = "DrawDots";
-            this.panel1.ResumeLayout(false);
+            this.panelBackground.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Panel panelBackground;
+        private System.Windows.Forms.Button buttonNewPicture;
+        private System.Windows.Forms.Button buttonLoadPicture;
     }
 }
 
