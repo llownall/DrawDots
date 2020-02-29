@@ -30,17 +30,12 @@ namespace DrawDots
 
         private void openGLWindow_OpenGLDraw(object sender, SharpGL.RenderEventArgs args)
         {
-            // Создаем экземпляр
             OpenGL gl = this.openGLWindow.OpenGL;
-
-            // Очистка экрана и буфера глубин
             gl.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT);
-
-            // Сбрасываем модельно-видовую матрицу
+            gl.MatrixMode(SharpGL.Enumerations.MatrixMode.Projection);
             gl.LoadIdentity();
-
-            // Двигаем перо вглубь экрана
-            gl.Translate(0.0f, 0.0f, -5.0f);
+            gl.Ortho2D(0, openGLWindow.Size.Width, 0, openGLWindow.Size.Height);
+            gl.MatrixMode(SharpGL.Enumerations.MatrixMode.Modelview);  //в примере это было, но и без неё работает...
 
             foreach (Group group in Groups)
             {
@@ -58,10 +53,7 @@ namespace DrawDots
                 }
                 foreach (MyPoint point in group.elements)
                 {
-                    gl.Vertex(
-                        GetOGLCoordinate(point.Position.X, openGLWindow.Size.Width),
-                        GetOGLCoordinate(point.Position.Y, openGLWindow.Size.Height)
-                        );
+                    gl.Vertex(point.Position.X, point.Position.Y);
                 }
                 gl.End();
             }
@@ -73,24 +65,14 @@ namespace DrawDots
                 Owner.Close();
         }
 
-        private double GetOGLCoordinate(int x, int size)
-        {
-            return -1f * size / 170 / 2 + 1f * x / 170;
-        }
-
         private void openGLWindow_MouseClick(object sender, MouseEventArgs e)
         {
             MyPoint newPoint = new MyPoint(e.X, openGLWindow.Size.Height - e.Y);
 
-            string openGLx = GetOGLCoordinate(newPoint.Position.X, openGLWindow.Size.Width).ToString();
-            string openGLy = GetOGLCoordinate(newPoint.Position.Y, openGLWindow.Size.Height).ToString();
-
             debugInfo.Text = $"Debug Info:\n" +
                 $"sizez {openGLWindow.Size.Width} {openGLWindow.Size.Height}\n" +
-                $"x = {newPoint.Position.X}\n" +
-                $"y = {newPoint.Position.Y}\n" +
-                $"openGLx = {openGLx}\n" +
-                $"openGLy = {openGLy}";
+                $"x = {e.X}\n" +
+                $"y = {openGLWindow.Size.Height - e.Y}";
 
             if (checkBoxDeletePointMode.Checked)
             {
