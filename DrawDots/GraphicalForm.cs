@@ -28,6 +28,7 @@ namespace DrawDots
             trackBarPointThickness.Value = Groups[comboBoxGroups.SelectedIndex].groupThickness;
         }
 
+
         private void openGLWindow_OpenGLDraw(object sender, SharpGL.RenderEventArgs args)
         {
             OpenGL gl = this.openGLWindow.OpenGL;
@@ -45,7 +46,8 @@ namespace DrawDots
 
                 if (group == comboBoxGroups.SelectedItem)
                 {
-                    gl.Color(0, 1f, 0);
+                    Color groupColor = Groups[comboBoxGroups.SelectedIndex].groupColor;
+                    gl.Color(groupColor.R, groupColor.G, groupColor.B);
                 }
                 else
                 {
@@ -129,6 +131,16 @@ namespace DrawDots
             }
             updateComboBox();
             comboBoxGroups.SelectedIndex = 0;
+        }
+
+        private void chooseColor_Click(object sender, EventArgs e)
+        {
+            ColorDialog MyDialog = new ColorDialog();
+            MyDialog.AllowFullOpen = false;
+            MyDialog.ShowHelp = true;
+            MyDialog.Color = Groups[comboBoxGroups.SelectedIndex].groupColor;
+            if (MyDialog.ShowDialog() == DialogResult.OK)
+                Groups[comboBoxGroups.SelectedIndex].setGroupColor(MyDialog.Color);
         }
     }
 }
