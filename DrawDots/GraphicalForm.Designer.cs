@@ -30,6 +30,7 @@
         {
             this.openGLWindow = new SharpGL.OpenGLControl();
             this.leftPanel = new System.Windows.Forms.Panel();
+            this.SaveData = new System.Windows.Forms.Button();
             this.checkBoxDeletePointMode = new System.Windows.Forms.CheckBox();
             this.labelPointThicknessValue = new System.Windows.Forms.Label();
             this.labelPointThickness = new System.Windows.Forms.Label();
@@ -63,6 +64,7 @@
             // 
             // leftPanel
             // 
+            this.leftPanel.Controls.Add(this.SaveData);
             this.leftPanel.Controls.Add(this.checkBoxDeletePointMode);
             this.leftPanel.Controls.Add(this.labelPointThicknessValue);
             this.leftPanel.Controls.Add(this.labelPointThickness);
@@ -77,6 +79,16 @@
             this.leftPanel.Name = "leftPanel";
             this.leftPanel.Size = new System.Drawing.Size(160, 702);
             this.leftPanel.TabIndex = 1;
+            // 
+            // SaveData
+            // 
+            this.SaveData.Location = new System.Drawing.Point(18, 486);
+            this.SaveData.Name = "SaveData";
+            this.SaveData.Size = new System.Drawing.Size(113, 61);
+            this.SaveData.TabIndex = 9;
+            this.SaveData.Text = "Сохраниться";
+            this.SaveData.UseVisualStyleBackColor = true;
+            this.SaveData.Click += new System.EventHandler(this.SaveData_Click);
             // 
             // checkBoxDeletePointMode
             // 
@@ -161,9 +173,9 @@
             // 
             this.debugInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.debugInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.debugInfo.Location = new System.Drawing.Point(0, 406);
+            this.debugInfo.Location = new System.Drawing.Point(0, 570);
             this.debugInfo.Name = "debugInfo";
-            this.debugInfo.Size = new System.Drawing.Size(160, 296);
+            this.debugInfo.Size = new System.Drawing.Size(160, 132);
             this.debugInfo.TabIndex = 0;
             this.debugInfo.Text = "Debug Info:\r\n";
             // 
@@ -198,5 +210,6 @@
         private System.Windows.Forms.Label labelPointThicknessValue;
         private System.Windows.Forms.Label labelPointThickness;
         private System.Windows.Forms.CheckBox checkBoxDeletePointMode;
+        private System.Windows.Forms.Button SaveData;
     }
 }

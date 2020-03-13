@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DrawDots.Models;
+using Newtonsoft.Json;
 using SharpGL;
 using SharpGL.SceneGraph.Assets;
 
@@ -35,7 +37,6 @@ namespace DrawDots
             gl.MatrixMode(SharpGL.Enumerations.MatrixMode.Projection);
             gl.LoadIdentity();
             gl.Ortho2D(0, openGLWindow.Size.Width, 0, openGLWindow.Size.Height);
-            gl.MatrixMode(SharpGL.Enumerations.MatrixMode.Modelview);  //в примере это было, но и без неё работает...
 
             foreach (Group group in Groups)
             {
@@ -53,7 +54,7 @@ namespace DrawDots
                 }
                 foreach (MyPoint point in group.elements)
                 {
-                    gl.Vertex(point.Position.X, point.Position.Y);
+                    gl.Vertex(point.x, point.y);
                 }
                 gl.End();
             }
@@ -70,7 +71,6 @@ namespace DrawDots
             MyPoint newPoint = new MyPoint(e.X, openGLWindow.Size.Height - e.Y);
 
             debugInfo.Text = $"Debug Info:\n" +
-                $"sizez {openGLWindow.Size.Width} {openGLWindow.Size.Height}\n" +
                 $"x = {e.X}\n" +
                 $"y = {openGLWindow.Size.Height - e.Y}";
 
@@ -129,6 +129,22 @@ namespace DrawDots
             }
             updateComboBox();
             comboBoxGroups.SelectedIndex = 0;
+        }
+
+        private void SaveData_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Filter = "JSON Data|*.json";
+            saveFileDialog1.Title = "Сохранить группы точек";
+            saveFileDialog1.ShowDialog();
+
+            if (saveFileDialog1.FileName != "")
+            {
+                using (StreamWriter sw = new StreamWriter(saveFileDialog1.FileName))
+                {
+                    sw.Write(JsonConvert.SerializeObject(Groups));
+                }
+            }
         }
     }
 }
