@@ -23,7 +23,6 @@ namespace DrawDots
         {
             Groups = groups;
             InitializeComponent();
-            debugInfo.Text += $"{Groups.Count} groups received";
             updateComboBox();
             comboBoxGroups.SelectedIndex = 0;
             labelPointThicknessValue.Text = Groups[comboBoxGroups.SelectedIndex].groupThickness.ToString();
@@ -73,10 +72,6 @@ namespace DrawDots
         {
             MyPoint newPoint = new MyPoint(e.X, openGLWindow.Size.Height - e.Y);
 
-            debugInfo.Text = $"Debug Info:\n" +
-                $"x = {e.X}\n" +
-                $"y = {openGLWindow.Size.Height - e.Y}";
-
             if (checkBoxDeletePointMode.Checked)
             {
                 foreach (MyPoint point in Groups[comboBoxGroups.SelectedIndex].elements)
@@ -87,7 +82,7 @@ namespace DrawDots
                         pointsGridView.Rows.Clear();
                         foreach (MyPoint groupPoint in Groups[comboBoxGroups.SelectedIndex].elements)
                         {
-                            pointsGridView.Rows.Add(groupPoint.Position.X, groupPoint.Position.Y);
+                            pointsGridView.Rows.Add(groupPoint.x, groupPoint.y);
                         }
                         break;
                     }
@@ -96,7 +91,7 @@ namespace DrawDots
             else
             {
                 Groups[comboBoxGroups.SelectedIndex].elements.Add(newPoint);
-                pointsGridView.Rows.Add(newPoint.Position.X, newPoint.Position.Y);
+                pointsGridView.Rows.Add(newPoint.x, newPoint.y);
             }
         }
 
@@ -120,7 +115,7 @@ namespace DrawDots
             pointsGridView.Rows.Clear();
             foreach (MyPoint groupPoint in Groups[comboBoxGroups.SelectedIndex].elements)
             {
-                pointsGridView.Rows.Add(groupPoint.Position.X, groupPoint.Position.Y);
+                pointsGridView.Rows.Add(groupPoint.x, groupPoint.y);
             }
         }
 
