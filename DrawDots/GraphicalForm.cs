@@ -28,10 +28,12 @@ namespace DrawDots
             trackBarPointThickness.Value = Groups[comboBoxGroups.SelectedIndex].groupThickness;
         }
 
+
         private void openGLWindow_OpenGLDraw(object sender, SharpGL.RenderEventArgs args)
         {
             OpenGL gl = this.openGLWindow.OpenGL;
             gl.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT);
+            gl.Enable(OpenGL.GL_POINT_SMOOTH);
             gl.MatrixMode(SharpGL.Enumerations.MatrixMode.Projection);
             gl.LoadIdentity();
             gl.Ortho2D(0, openGLWindow.Size.Width, 0, openGLWindow.Size.Height);
@@ -45,7 +47,8 @@ namespace DrawDots
 
                 if (group == comboBoxGroups.SelectedItem)
                 {
-                    gl.Color(0, 1f, 0);
+                    Color groupColor = Groups[comboBoxGroups.SelectedIndex].groupColor;
+                    gl.Color(groupColor.R, groupColor.G, groupColor.B);
                 }
                 else
                 {
@@ -81,6 +84,11 @@ namespace DrawDots
                     if (point.isPointed(newPoint, Groups[comboBoxGroups.SelectedIndex].groupThickness / 2))
                     {
                         Groups[comboBoxGroups.SelectedIndex].elements.Remove(point);
+                        pointsGridView.Rows.Clear();
+                        foreach (MyPoint groupPoint in Groups[comboBoxGroups.SelectedIndex].elements)
+                        {
+                            pointsGridView.Rows.Add(groupPoint.Position.X, groupPoint.Position.Y);
+                        }
                         break;
                     }
                 }
@@ -88,6 +96,7 @@ namespace DrawDots
             else
             {
                 Groups[comboBoxGroups.SelectedIndex].elements.Add(newPoint);
+                pointsGridView.Rows.Add(newPoint.Position.X, newPoint.Position.Y);
             }
         }
 
@@ -108,6 +117,11 @@ namespace DrawDots
         {
             labelPointThicknessValue.Text = Groups[comboBoxGroups.SelectedIndex].groupThickness.ToString();
             trackBarPointThickness.Value = Groups[comboBoxGroups.SelectedIndex].groupThickness;
+            pointsGridView.Rows.Clear();
+            foreach (MyPoint groupPoint in Groups[comboBoxGroups.SelectedIndex].elements)
+            {
+                pointsGridView.Rows.Add(groupPoint.Position.X, groupPoint.Position.Y);
+            }
         }
 
         private void buttonNewGroup_Click(object sender, EventArgs e)
@@ -129,6 +143,20 @@ namespace DrawDots
             }
             updateComboBox();
             comboBoxGroups.SelectedIndex = 0;
+        }
+
+        private void pointsGridView_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            Groups[comboBoxGroups.SelectedIndex].elements.RemoveAt(e.Row.Index);
+        }
+        private void chooseColor_Click(object sender, EventArgs e)
+        {
+            ColorDialog MyDialog = new ColorDialog();
+            MyDialog.AllowFullOpen = false;
+            MyDialog.ShowHelp = true;
+            MyDialog.Color = Groups[comboBoxGroups.SelectedIndex].groupColor;
+            if (MyDialog.ShowDialog() == DialogResult.OK)
+                Groups[comboBoxGroups.SelectedIndex].setGroupColor(MyDialog.Color);
         }
     }
 }
