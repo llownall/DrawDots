@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DrawDots.Models;
+using Newtonsoft.Json;
 using SharpGL;
 using SharpGL.SceneGraph.Assets;
 
@@ -21,7 +23,6 @@ namespace DrawDots
         {
             Groups = groups;
             InitializeComponent();
-            debugInfo.Text += $"{Groups.Count} groups received";
             updateComboBox();
             comboBoxGroups.SelectedIndex = 0;
             labelPointThicknessValue.Text = Groups[comboBoxGroups.SelectedIndex].groupThickness.ToString();
@@ -37,7 +38,6 @@ namespace DrawDots
             gl.MatrixMode(SharpGL.Enumerations.MatrixMode.Projection);
             gl.LoadIdentity();
             gl.Ortho2D(0, openGLWindow.Size.Width, 0, openGLWindow.Size.Height);
-            gl.MatrixMode(SharpGL.Enumerations.MatrixMode.Modelview);  //в примере это было, но и без неё работает...
 
             foreach (Group group in Groups)
             {
@@ -56,7 +56,7 @@ namespace DrawDots
                 }
                 foreach (MyPoint point in group.elements)
                 {
-                    gl.Vertex(point.Position.X, point.Position.Y);
+                    gl.Vertex(point.x, point.y);
                 }
                 gl.End();
             }
@@ -72,11 +72,6 @@ namespace DrawDots
         {
             MyPoint newPoint = new MyPoint(e.X, openGLWindow.Size.Height - e.Y);
 
-            debugInfo.Text = $"Debug Info:\n" +
-                $"sizez {openGLWindow.Size.Width} {openGLWindow.Size.Height}\n" +
-                $"x = {e.X}\n" +
-                $"y = {openGLWindow.Size.Height - e.Y}";
-
             if (checkBoxDeletePointMode.Checked)
             {
                 foreach (MyPoint point in Groups[comboBoxGroups.SelectedIndex].elements)
@@ -87,7 +82,7 @@ namespace DrawDots
                         pointsGridView.Rows.Clear();
                         foreach (MyPoint groupPoint in Groups[comboBoxGroups.SelectedIndex].elements)
                         {
-                            pointsGridView.Rows.Add(groupPoint.Position.X, groupPoint.Position.Y);
+                            pointsGridView.Rows.Add(groupPoint.x, groupPoint.y);
                         }
                         break;
                     }
@@ -96,7 +91,7 @@ namespace DrawDots
             else
             {
                 Groups[comboBoxGroups.SelectedIndex].elements.Add(newPoint);
-                pointsGridView.Rows.Add(newPoint.Position.X, newPoint.Position.Y);
+                pointsGridView.Rows.Add(newPoint.x, newPoint.y);
             }
         }
 
@@ -120,7 +115,7 @@ namespace DrawDots
             pointsGridView.Rows.Clear();
             foreach (MyPoint groupPoint in Groups[comboBoxGroups.SelectedIndex].elements)
             {
-                pointsGridView.Rows.Add(groupPoint.Position.X, groupPoint.Position.Y);
+                pointsGridView.Rows.Add(groupPoint.x, groupPoint.y);
             }
         }
 
@@ -143,6 +138,22 @@ namespace DrawDots
             }
             updateComboBox();
             comboBoxGroups.SelectedIndex = 0;
+        }
+
+        private void SaveData_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Filter = "JSON Data|*.json";
+            saveFileDialog1.Title = "Сохранить группы точек";
+            saveFileDialog1.ShowDialog();
+
+            if (saveFileDialog1.FileName != "")
+            {
+                using (StreamWriter sw = new StreamWriter(saveFileDialog1.FileName))
+                {
+                    sw.Write(JsonConvert.SerializeObject(Groups));
+                }
+            }
         }
 
         private void pointsGridView_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)

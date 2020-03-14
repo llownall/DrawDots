@@ -54,6 +54,7 @@
             this.buttonLoadPicture.TabIndex = 1;
             this.buttonLoadPicture.Text = "Загрузить рисунок";
             this.buttonLoadPicture.UseVisualStyleBackColor = true;
+            this.buttonLoadPicture.Click += new System.EventHandler(this.buttonLoadPicture_Click);
             // 
             // buttonNewPicture
             // 

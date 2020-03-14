@@ -30,13 +30,11 @@
         {
             this.openGLWindow = new SharpGL.OpenGLControl();
             this.leftPanel = new System.Windows.Forms.Panel();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.pointsGridView = new System.Windows.Forms.DataGridView();
             this.X = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Y = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
-            this.debugInfo = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
@@ -44,6 +42,7 @@
             this.labelPointThickness = new System.Windows.Forms.Label();
             this.labelPointThicknessValue = new System.Windows.Forms.Label();
             this.trackBarPointThickness = new System.Windows.Forms.TrackBar();
+            this.chooseColor = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.labelChooseGroup = new System.Windows.Forms.Label();
@@ -52,13 +51,12 @@
             this.buttonNewGroup = new System.Windows.Forms.Button();
             this.buttonDeleteGroup = new System.Windows.Forms.Button();
             this.checkBoxDeletePointMode = new System.Windows.Forms.CheckBox();
-            this.chooseColor = new System.Windows.Forms.Button();
+            this.SaveData = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.openGLWindow)).BeginInit();
             this.leftPanel.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pointsGridView)).BeginInit();
-            this.groupBox3.SuspendLayout();
-            this.flowLayoutPanel6.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.flowLayoutPanel4.SuspendLayout();
             this.flowLayoutPanel5.SuspendLayout();
@@ -88,14 +86,25 @@
             // 
             // leftPanel
             // 
-            this.leftPanel.Controls.Add(this.groupBox4);
             this.leftPanel.Controls.Add(this.groupBox3);
+            this.leftPanel.Controls.Add(this.groupBox4);
             this.leftPanel.Controls.Add(this.groupBox2);
             this.leftPanel.Controls.Add(this.groupBox1);
             this.leftPanel.Location = new System.Drawing.Point(0, 0);
             this.leftPanel.Name = "leftPanel";
             this.leftPanel.Size = new System.Drawing.Size(211, 702);
             this.leftPanel.TabIndex = 1;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.SaveData);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.groupBox3.Location = new System.Drawing.Point(0, 614);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(211, 88);
+            this.groupBox3.TabIndex = 13;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Сохранение результатов";
             // 
             // groupBox4
             // 
@@ -135,38 +144,6 @@
             this.Y.HeaderText = "Y";
             this.Y.Name = "Y";
             this.Y.ReadOnly = true;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.AutoSize = true;
-            this.groupBox3.Controls.Add(this.flowLayoutPanel6);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox3.Location = new System.Drawing.Point(0, 663);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(211, 39);
-            this.groupBox3.TabIndex = 11;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Debug info";
-            // 
-            // flowLayoutPanel6
-            // 
-            this.flowLayoutPanel6.AutoSize = true;
-            this.flowLayoutPanel6.Controls.Add(this.debugInfo);
-            this.flowLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel6.Location = new System.Drawing.Point(3, 16);
-            this.flowLayoutPanel6.Name = "flowLayoutPanel6";
-            this.flowLayoutPanel6.Size = new System.Drawing.Size(205, 20);
-            this.flowLayoutPanel6.TabIndex = 0;
-            // 
-            // debugInfo
-            // 
-            this.debugInfo.AutoSize = true;
-            this.debugInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.debugInfo.Location = new System.Drawing.Point(3, 0);
-            this.debugInfo.Name = "debugInfo";
-            this.debugInfo.Size = new System.Drawing.Size(93, 20);
-            this.debugInfo.TabIndex = 0;
-            this.debugInfo.Text = "Debug Info:\r\n";
             // 
             // groupBox2
             // 
@@ -241,6 +218,16 @@
             this.trackBarPointThickness.TickFrequency = 3;
             this.trackBarPointThickness.Value = 5;
             this.trackBarPointThickness.Scroll += new System.EventHandler(this.trackBarPointThickness_Scroll);
+            // 
+            // chooseColor
+            // 
+            this.chooseColor.Location = new System.Drawing.Point(3, 79);
+            this.chooseColor.Name = "chooseColor";
+            this.chooseColor.Size = new System.Drawing.Size(125, 23);
+            this.chooseColor.TabIndex = 12;
+            this.chooseColor.Text = "Выбрать цвет";
+            this.chooseColor.UseVisualStyleBackColor = true;
+            this.chooseColor.Click += new System.EventHandler(this.chooseColor_Click);
             // 
             // groupBox1
             // 
@@ -330,15 +317,15 @@
             this.checkBoxDeletePointMode.Text = "Удаление точек";
             this.checkBoxDeletePointMode.UseVisualStyleBackColor = true;
             // 
-            // chooseColor
+            // SaveData
             // 
-            this.chooseColor.Location = new System.Drawing.Point(3, 79);
-            this.chooseColor.Name = "chooseColor";
-            this.chooseColor.Size = new System.Drawing.Size(125, 23);
-            this.chooseColor.TabIndex = 12;
-            this.chooseColor.Text = "Выбрать цвет";
-            this.chooseColor.UseVisualStyleBackColor = true;
-            this.chooseColor.Click += new System.EventHandler(this.chooseColor_Click);
+            this.SaveData.Location = new System.Drawing.Point(52, 31);
+            this.SaveData.Name = "SaveData";
+            this.SaveData.Size = new System.Drawing.Size(106, 45);
+            this.SaveData.TabIndex = 0;
+            this.SaveData.Text = "Сохранить";
+            this.SaveData.UseVisualStyleBackColor = true;
+            this.SaveData.Click += new System.EventHandler(this.SaveData_Click);
             // 
             // GraphicalForm
             // 
@@ -353,12 +340,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.openGLWindow)).EndInit();
             this.leftPanel.ResumeLayout(false);
             this.leftPanel.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pointsGridView)).EndInit();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.flowLayoutPanel6.ResumeLayout(false);
-            this.flowLayoutPanel6.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.flowLayoutPanel4.ResumeLayout(false);
             this.flowLayoutPanel4.PerformLayout();
@@ -380,7 +364,6 @@
 
         private SharpGL.OpenGLControl openGLWindow;
         private System.Windows.Forms.Panel leftPanel;
-        private System.Windows.Forms.Label debugInfo;
         private System.Windows.Forms.Label labelChooseGroup;
         private System.Windows.Forms.ComboBox comboBoxGroups;
         private System.Windows.Forms.Button buttonDeleteGroup;
@@ -396,12 +379,12 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel6;
         private System.Windows.Forms.Button chooseColor;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.DataGridView pointsGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn X;
         private System.Windows.Forms.DataGridViewTextBoxColumn Y;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button SaveData;
     }
 }

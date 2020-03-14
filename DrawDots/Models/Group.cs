@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace DrawDots.Models
 {
     public class Group
     {
-        public readonly List<IElement> elements;
+        public readonly List<MyPoint> elements;
         public int groupThickness { get; private set; } = 5;
         public Color groupColor { get; private set; } = Color.FromArgb(255, 255, 255);
         public string name { get; private set; }
@@ -17,16 +18,24 @@ namespace DrawDots.Models
         public Group(string name)
         {
             this.name = name;
-            elements = new List<IElement>();
+            elements = new List<MyPoint>();
         }
 
-        public Group(string name, List<IElement> elements)
+        public Group(string name, List<MyPoint> elements)
         {
             this.name = name;
             this.elements = elements;
         }
 
-        public void Add(IElement element)
+        [JsonConstructor]
+        public Group(string name, List<MyPoint> elements, int groupThickness)
+        {
+            this.name = name;
+            this.elements = elements;
+            this.groupThickness = groupThickness;
+        }
+
+        public void Add(MyPoint element)
         {
             elements.Add(element);
         }
