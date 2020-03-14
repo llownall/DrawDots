@@ -81,6 +81,11 @@ namespace DrawDots
                     if (point.isPointed(newPoint, Groups[comboBoxGroups.SelectedIndex].groupThickness / 2))
                     {
                         Groups[comboBoxGroups.SelectedIndex].elements.Remove(point);
+                        pointsGridView.Rows.Clear();
+                        foreach (MyPoint groupPoint in Groups[comboBoxGroups.SelectedIndex].elements)
+                        {
+                            pointsGridView.Rows.Add(groupPoint.Position.X, groupPoint.Position.Y);
+                        }
                         break;
                     }
                 }
@@ -88,6 +93,7 @@ namespace DrawDots
             else
             {
                 Groups[comboBoxGroups.SelectedIndex].elements.Add(newPoint);
+                pointsGridView.Rows.Add(newPoint.Position.X, newPoint.Position.Y);
             }
         }
 
@@ -108,6 +114,11 @@ namespace DrawDots
         {
             labelPointThicknessValue.Text = Groups[comboBoxGroups.SelectedIndex].groupThickness.ToString();
             trackBarPointThickness.Value = Groups[comboBoxGroups.SelectedIndex].groupThickness;
+            pointsGridView.Rows.Clear();
+            foreach (MyPoint groupPoint in Groups[comboBoxGroups.SelectedIndex].elements)
+            {
+                pointsGridView.Rows.Add(groupPoint.Position.X, groupPoint.Position.Y);
+            }
         }
 
         private void buttonNewGroup_Click(object sender, EventArgs e)
@@ -129,6 +140,11 @@ namespace DrawDots
             }
             updateComboBox();
             comboBoxGroups.SelectedIndex = 0;
+        }
+
+        private void pointsGridView_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            Groups[comboBoxGroups.SelectedIndex].elements.RemoveAt(e.Row.Index);
         }
     }
 }
