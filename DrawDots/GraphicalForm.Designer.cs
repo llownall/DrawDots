@@ -30,19 +30,43 @@
         {
             this.openGLWindow = new SharpGL.OpenGLControl();
             this.leftPanel = new System.Windows.Forms.Panel();
-            this.SaveData = new System.Windows.Forms.Button();
-            this.checkBoxDeletePointMode = new System.Windows.Forms.CheckBox();
-            this.labelPointThicknessValue = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.pointsGridView = new System.Windows.Forms.DataGridView();
+            this.X = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Y = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
+            this.debugInfo = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.labelPointThickness = new System.Windows.Forms.Label();
+            this.labelPointThicknessValue = new System.Windows.Forms.Label();
             this.trackBarPointThickness = new System.Windows.Forms.TrackBar();
-            this.buttonDeleteGroup = new System.Windows.Forms.Button();
-            this.buttonNewGroup = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.labelChooseGroup = new System.Windows.Forms.Label();
             this.comboBoxGroups = new System.Windows.Forms.ComboBox();
-            this.debugInfo = new System.Windows.Forms.Label();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.buttonNewGroup = new System.Windows.Forms.Button();
+            this.buttonDeleteGroup = new System.Windows.Forms.Button();
+            this.checkBoxDeletePointMode = new System.Windows.Forms.CheckBox();
+            this.chooseColor = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.openGLWindow)).BeginInit();
             this.leftPanel.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pointsGridView)).BeginInit();
+            this.groupBox3.SuspendLayout();
+            this.flowLayoutPanel6.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.flowLayoutPanel4.SuspendLayout();
+            this.flowLayoutPanel5.SuspendLayout();
+            this.flowLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarPointThickness)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // openGLWindow
@@ -52,109 +76,203 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.openGLWindow.DrawFPS = true;
             this.openGLWindow.FrameRate = 30;
-            this.openGLWindow.Location = new System.Drawing.Point(166, 0);
+            this.openGLWindow.Location = new System.Drawing.Point(217, 0);
             this.openGLWindow.Name = "openGLWindow";
             this.openGLWindow.OpenGLVersion = SharpGL.Version.OpenGLVersion.OpenGL2_1;
             this.openGLWindow.RenderContextType = SharpGL.RenderContextType.DIBSection;
             this.openGLWindow.RenderTrigger = SharpGL.RenderTrigger.TimerBased;
-            this.openGLWindow.Size = new System.Drawing.Size(939, 702);
+            this.openGLWindow.Size = new System.Drawing.Size(888, 702);
             this.openGLWindow.TabIndex = 0;
             this.openGLWindow.OpenGLDraw += new SharpGL.RenderEventHandler(this.openGLWindow_OpenGLDraw);
             this.openGLWindow.MouseClick += new System.Windows.Forms.MouseEventHandler(this.openGLWindow_MouseClick);
             // 
             // leftPanel
             // 
-            this.leftPanel.Controls.Add(this.SaveData);
-            this.leftPanel.Controls.Add(this.checkBoxDeletePointMode);
-            this.leftPanel.Controls.Add(this.labelPointThicknessValue);
-            this.leftPanel.Controls.Add(this.labelPointThickness);
-            this.leftPanel.Controls.Add(this.trackBarPointThickness);
-            this.leftPanel.Controls.Add(this.buttonDeleteGroup);
-            this.leftPanel.Controls.Add(this.buttonNewGroup);
-            this.leftPanel.Controls.Add(this.labelChooseGroup);
-            this.leftPanel.Controls.Add(this.comboBoxGroups);
-            this.leftPanel.Controls.Add(this.debugInfo);
-            this.leftPanel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.leftPanel.Controls.Add(this.groupBox4);
+            this.leftPanel.Controls.Add(this.groupBox3);
+            this.leftPanel.Controls.Add(this.groupBox2);
+            this.leftPanel.Controls.Add(this.groupBox1);
             this.leftPanel.Location = new System.Drawing.Point(0, 0);
             this.leftPanel.Name = "leftPanel";
-            this.leftPanel.Size = new System.Drawing.Size(160, 702);
+            this.leftPanel.Size = new System.Drawing.Size(211, 702);
             this.leftPanel.TabIndex = 1;
             // 
-            // SaveData
+            // groupBox4
             // 
-            this.SaveData.Location = new System.Drawing.Point(18, 486);
-            this.SaveData.Name = "SaveData";
-            this.SaveData.Size = new System.Drawing.Size(113, 61);
-            this.SaveData.TabIndex = 9;
-            this.SaveData.Text = "Сохраниться";
-            this.SaveData.UseVisualStyleBackColor = true;
-            this.SaveData.Click += new System.EventHandler(this.SaveData_Click);
+            this.groupBox4.Controls.Add(this.pointsGridView);
+            this.groupBox4.Location = new System.Drawing.Point(15, 287);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(172, 165);
+            this.groupBox4.TabIndex = 12;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Точки";
             // 
-            // checkBoxDeletePointMode
+            // pointsGridView
             // 
-            this.checkBoxDeletePointMode.AutoSize = true;
-            this.checkBoxDeletePointMode.Location = new System.Drawing.Point(15, 123);
-            this.checkBoxDeletePointMode.Name = "checkBoxDeletePointMode";
-            this.checkBoxDeletePointMode.Size = new System.Drawing.Size(107, 17);
-            this.checkBoxDeletePointMode.TabIndex = 8;
-            this.checkBoxDeletePointMode.Text = "Удаление точек";
-            this.checkBoxDeletePointMode.UseVisualStyleBackColor = true;
+            this.pointsGridView.AllowUserToAddRows = false;
+            this.pointsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.pointsGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.X,
+            this.Y});
+            this.pointsGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pointsGridView.Location = new System.Drawing.Point(3, 16);
+            this.pointsGridView.Name = "pointsGridView";
+            this.pointsGridView.ReadOnly = true;
+            this.pointsGridView.Size = new System.Drawing.Size(166, 146);
+            this.pointsGridView.TabIndex = 0;
+            this.pointsGridView.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.pointsGridView_UserDeletingRow);
             // 
-            // labelPointThicknessValue
+            // X
             // 
-            this.labelPointThicknessValue.AutoSize = true;
-            this.labelPointThicknessValue.Location = new System.Drawing.Point(108, 267);
-            this.labelPointThicknessValue.Name = "labelPointThicknessValue";
-            this.labelPointThicknessValue.Size = new System.Drawing.Size(13, 13);
-            this.labelPointThicknessValue.TabIndex = 7;
-            this.labelPointThicknessValue.Text = "1";
+            this.X.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.X.HeaderText = "X";
+            this.X.Name = "X";
+            this.X.ReadOnly = true;
+            // 
+            // Y
+            // 
+            this.Y.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Y.HeaderText = "Y";
+            this.Y.Name = "Y";
+            this.Y.ReadOnly = true;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.AutoSize = true;
+            this.groupBox3.Controls.Add(this.flowLayoutPanel6);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.groupBox3.Location = new System.Drawing.Point(0, 663);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(211, 39);
+            this.groupBox3.TabIndex = 11;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Debug info";
+            // 
+            // flowLayoutPanel6
+            // 
+            this.flowLayoutPanel6.AutoSize = true;
+            this.flowLayoutPanel6.Controls.Add(this.debugInfo);
+            this.flowLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel6.Location = new System.Drawing.Point(3, 16);
+            this.flowLayoutPanel6.Name = "flowLayoutPanel6";
+            this.flowLayoutPanel6.Size = new System.Drawing.Size(205, 20);
+            this.flowLayoutPanel6.TabIndex = 0;
+            // 
+            // debugInfo
+            // 
+            this.debugInfo.AutoSize = true;
+            this.debugInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.debugInfo.Location = new System.Drawing.Point(3, 0);
+            this.debugInfo.Name = "debugInfo";
+            this.debugInfo.Size = new System.Drawing.Size(93, 20);
+            this.debugInfo.TabIndex = 0;
+            this.debugInfo.Text = "Debug Info:\r\n";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.AutoSize = true;
+            this.groupBox2.Controls.Add(this.flowLayoutPanel4);
+            this.groupBox2.Location = new System.Drawing.Point(12, 165);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(178, 131);
+            this.groupBox2.TabIndex = 10;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Внешний вид";
+            // 
+            // flowLayoutPanel4
+            // 
+            this.flowLayoutPanel4.Controls.Add(this.flowLayoutPanel5);
+            this.flowLayoutPanel4.Controls.Add(this.chooseColor);
+            this.flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel4.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(3, 16);
+            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(172, 112);
+            this.flowLayoutPanel4.TabIndex = 0;
+            // 
+            // flowLayoutPanel5
+            // 
+            this.flowLayoutPanel5.AutoSize = true;
+            this.flowLayoutPanel5.Controls.Add(this.flowLayoutPanel3);
+            this.flowLayoutPanel5.Controls.Add(this.trackBarPointThickness);
+            this.flowLayoutPanel5.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel5.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel5.Name = "flowLayoutPanel5";
+            this.flowLayoutPanel5.Size = new System.Drawing.Size(158, 70);
+            this.flowLayoutPanel5.TabIndex = 11;
+            // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.AutoSize = true;
+            this.flowLayoutPanel3.Controls.Add(this.labelPointThickness);
+            this.flowLayoutPanel3.Controls.Add(this.labelPointThicknessValue);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(109, 13);
+            this.flowLayoutPanel3.TabIndex = 11;
             // 
             // labelPointThickness
             // 
             this.labelPointThickness.AutoSize = true;
-            this.labelPointThickness.Location = new System.Drawing.Point(15, 268);
+            this.labelPointThickness.Location = new System.Drawing.Point(3, 0);
             this.labelPointThickness.Name = "labelPointThickness";
             this.labelPointThickness.Size = new System.Drawing.Size(84, 13);
             this.labelPointThickness.TabIndex = 6;
             this.labelPointThickness.Text = "Толщина точек";
             // 
+            // labelPointThicknessValue
+            // 
+            this.labelPointThicknessValue.AutoSize = true;
+            this.labelPointThicknessValue.Location = new System.Drawing.Point(93, 0);
+            this.labelPointThicknessValue.Name = "labelPointThicknessValue";
+            this.labelPointThicknessValue.Size = new System.Drawing.Size(13, 13);
+            this.labelPointThicknessValue.TabIndex = 7;
+            this.labelPointThicknessValue.Text = "1";
+            // 
             // trackBarPointThickness
             // 
-            this.trackBarPointThickness.Location = new System.Drawing.Point(12, 287);
+            this.trackBarPointThickness.Location = new System.Drawing.Point(3, 22);
             this.trackBarPointThickness.Maximum = 20;
             this.trackBarPointThickness.Minimum = 5;
             this.trackBarPointThickness.Name = "trackBarPointThickness";
-            this.trackBarPointThickness.Size = new System.Drawing.Size(135, 45);
+            this.trackBarPointThickness.Size = new System.Drawing.Size(152, 45);
             this.trackBarPointThickness.SmallChange = 3;
             this.trackBarPointThickness.TabIndex = 3;
             this.trackBarPointThickness.TickFrequency = 3;
             this.trackBarPointThickness.Value = 5;
             this.trackBarPointThickness.Scroll += new System.EventHandler(this.trackBarPointThickness_Scroll);
             // 
-            // buttonDeleteGroup
+            // groupBox1
             // 
-            this.buttonDeleteGroup.Location = new System.Drawing.Point(81, 80);
-            this.buttonDeleteGroup.Name = "buttonDeleteGroup";
-            this.buttonDeleteGroup.Size = new System.Drawing.Size(66, 23);
-            this.buttonDeleteGroup.TabIndex = 4;
-            this.buttonDeleteGroup.Text = "Удалить";
-            this.buttonDeleteGroup.UseVisualStyleBackColor = true;
-            this.buttonDeleteGroup.Click += new System.EventHandler(this.buttonDeleteGroup_Click);
+            this.groupBox1.AutoSize = true;
+            this.groupBox1.Controls.Add(this.flowLayoutPanel1);
+            this.groupBox1.Location = new System.Drawing.Point(12, 16);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(178, 137);
+            this.groupBox1.TabIndex = 9;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Управление группой";
             // 
-            // buttonNewGroup
+            // flowLayoutPanel1
             // 
-            this.buttonNewGroup.Location = new System.Drawing.Point(15, 80);
-            this.buttonNewGroup.Name = "buttonNewGroup";
-            this.buttonNewGroup.Size = new System.Drawing.Size(60, 23);
-            this.buttonNewGroup.TabIndex = 3;
-            this.buttonNewGroup.Text = "Новая";
-            this.buttonNewGroup.UseVisualStyleBackColor = true;
-            this.buttonNewGroup.Click += new System.EventHandler(this.buttonNewGroup_Click);
+            this.flowLayoutPanel1.AutoSize = true;
+            this.flowLayoutPanel1.Controls.Add(this.labelChooseGroup);
+            this.flowLayoutPanel1.Controls.Add(this.comboBoxGroups);
+            this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanel2);
+            this.flowLayoutPanel1.Controls.Add(this.checkBoxDeletePointMode);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 16);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(10);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(5, 10, 0, 10);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(172, 118);
+            this.flowLayoutPanel1.TabIndex = 0;
             // 
             // labelChooseGroup
             // 
             this.labelChooseGroup.AutoSize = true;
-            this.labelChooseGroup.Location = new System.Drawing.Point(12, 18);
+            this.labelChooseGroup.Location = new System.Drawing.Point(8, 10);
             this.labelChooseGroup.Name = "labelChooseGroup";
             this.labelChooseGroup.Size = new System.Drawing.Size(82, 13);
             this.labelChooseGroup.TabIndex = 2;
@@ -162,22 +280,65 @@
             // 
             // comboBoxGroups
             // 
+            this.comboBoxGroups.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxGroups.FormattingEnabled = true;
-            this.comboBoxGroups.Location = new System.Drawing.Point(15, 48);
+            this.comboBoxGroups.Location = new System.Drawing.Point(8, 26);
             this.comboBoxGroups.Name = "comboBoxGroups";
             this.comboBoxGroups.Size = new System.Drawing.Size(132, 21);
             this.comboBoxGroups.TabIndex = 1;
             this.comboBoxGroups.SelectedIndexChanged += new System.EventHandler(this.comboBoxGroups_SelectedIndexChanged);
             // 
-            // debugInfo
+            // flowLayoutPanel2
             // 
-            this.debugInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.debugInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.debugInfo.Location = new System.Drawing.Point(0, 570);
-            this.debugInfo.Name = "debugInfo";
-            this.debugInfo.Size = new System.Drawing.Size(160, 132);
-            this.debugInfo.TabIndex = 0;
-            this.debugInfo.Text = "Debug Info:\r\n";
+            this.flowLayoutPanel2.AutoSize = true;
+            this.flowLayoutPanel2.Controls.Add(this.buttonNewGroup);
+            this.flowLayoutPanel2.Controls.Add(this.buttonDeleteGroup);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(5, 53);
+            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(138, 29);
+            this.flowLayoutPanel2.TabIndex = 9;
+            // 
+            // buttonNewGroup
+            // 
+            this.buttonNewGroup.Location = new System.Drawing.Point(3, 3);
+            this.buttonNewGroup.Name = "buttonNewGroup";
+            this.buttonNewGroup.Size = new System.Drawing.Size(60, 23);
+            this.buttonNewGroup.TabIndex = 3;
+            this.buttonNewGroup.Text = "Новая";
+            this.buttonNewGroup.UseVisualStyleBackColor = true;
+            this.buttonNewGroup.Click += new System.EventHandler(this.buttonNewGroup_Click);
+            // 
+            // buttonDeleteGroup
+            // 
+            this.buttonDeleteGroup.Location = new System.Drawing.Point(69, 3);
+            this.buttonDeleteGroup.Name = "buttonDeleteGroup";
+            this.buttonDeleteGroup.Size = new System.Drawing.Size(66, 23);
+            this.buttonDeleteGroup.TabIndex = 4;
+            this.buttonDeleteGroup.Text = "Удалить";
+            this.buttonDeleteGroup.UseVisualStyleBackColor = true;
+            this.buttonDeleteGroup.Click += new System.EventHandler(this.buttonDeleteGroup_Click);
+            // 
+            // checkBoxDeletePointMode
+            // 
+            this.checkBoxDeletePointMode.AutoSize = true;
+            this.checkBoxDeletePointMode.Location = new System.Drawing.Point(8, 88);
+            this.checkBoxDeletePointMode.Name = "checkBoxDeletePointMode";
+            this.checkBoxDeletePointMode.Size = new System.Drawing.Size(107, 17);
+            this.checkBoxDeletePointMode.TabIndex = 8;
+            this.checkBoxDeletePointMode.Text = "Удаление точек";
+            this.checkBoxDeletePointMode.UseVisualStyleBackColor = true;
+            // 
+            // chooseColor
+            // 
+            this.chooseColor.Location = new System.Drawing.Point(3, 79);
+            this.chooseColor.Name = "chooseColor";
+            this.chooseColor.Size = new System.Drawing.Size(125, 23);
+            this.chooseColor.TabIndex = 12;
+            this.chooseColor.Text = "Выбрать цвет";
+            this.chooseColor.UseVisualStyleBackColor = true;
+            this.chooseColor.Click += new System.EventHandler(this.chooseColor_Click);
             // 
             // GraphicalForm
             // 
@@ -192,7 +353,25 @@
             ((System.ComponentModel.ISupportInitialize)(this.openGLWindow)).EndInit();
             this.leftPanel.ResumeLayout(false);
             this.leftPanel.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pointsGridView)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.flowLayoutPanel6.ResumeLayout(false);
+            this.flowLayoutPanel6.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.flowLayoutPanel4.ResumeLayout(false);
+            this.flowLayoutPanel4.PerformLayout();
+            this.flowLayoutPanel5.ResumeLayout(false);
+            this.flowLayoutPanel5.PerformLayout();
+            this.flowLayoutPanel3.ResumeLayout(false);
+            this.flowLayoutPanel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarPointThickness)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
+            this.flowLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -210,6 +389,19 @@
         private System.Windows.Forms.Label labelPointThicknessValue;
         private System.Windows.Forms.Label labelPointThickness;
         private System.Windows.Forms.CheckBox checkBoxDeletePointMode;
-        private System.Windows.Forms.Button SaveData;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel6;
+        private System.Windows.Forms.Button chooseColor;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.DataGridView pointsGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn X;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Y;
     }
 }
