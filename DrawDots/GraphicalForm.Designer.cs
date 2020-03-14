@@ -30,6 +30,10 @@
         {
             this.openGLWindow = new SharpGL.OpenGLControl();
             this.leftPanel = new System.Windows.Forms.Panel();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.pointsGridView = new System.Windows.Forms.DataGridView();
+            this.X = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Y = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
             this.debugInfo = new System.Windows.Forms.Label();
@@ -51,6 +55,8 @@
             this.chooseColor = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.openGLWindow)).BeginInit();
             this.leftPanel.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pointsGridView)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.flowLayoutPanel6.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -82,6 +88,7 @@
             // 
             // leftPanel
             // 
+            this.leftPanel.Controls.Add(this.groupBox4);
             this.leftPanel.Controls.Add(this.groupBox3);
             this.leftPanel.Controls.Add(this.groupBox2);
             this.leftPanel.Controls.Add(this.groupBox1);
@@ -89,6 +96,45 @@
             this.leftPanel.Name = "leftPanel";
             this.leftPanel.Size = new System.Drawing.Size(211, 702);
             this.leftPanel.TabIndex = 1;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.pointsGridView);
+            this.groupBox4.Location = new System.Drawing.Point(15, 287);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(172, 165);
+            this.groupBox4.TabIndex = 12;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Точки";
+            // 
+            // pointsGridView
+            // 
+            this.pointsGridView.AllowUserToAddRows = false;
+            this.pointsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.pointsGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.X,
+            this.Y});
+            this.pointsGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pointsGridView.Location = new System.Drawing.Point(3, 16);
+            this.pointsGridView.Name = "pointsGridView";
+            this.pointsGridView.ReadOnly = true;
+            this.pointsGridView.Size = new System.Drawing.Size(166, 146);
+            this.pointsGridView.TabIndex = 0;
+            this.pointsGridView.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.pointsGridView_UserDeletingRow);
+            // 
+            // X
+            // 
+            this.X.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.X.HeaderText = "X";
+            this.X.Name = "X";
+            this.X.ReadOnly = true;
+            // 
+            // Y
+            // 
+            this.Y.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Y.HeaderText = "Y";
+            this.Y.Name = "Y";
+            this.Y.ReadOnly = true;
             // 
             // groupBox3
             // 
@@ -307,6 +353,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.openGLWindow)).EndInit();
             this.leftPanel.ResumeLayout(false);
             this.leftPanel.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pointsGridView)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.flowLayoutPanel6.ResumeLayout(false);
@@ -351,5 +399,9 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel6;
         private System.Windows.Forms.Button chooseColor;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.DataGridView pointsGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn X;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Y;
     }
 }
