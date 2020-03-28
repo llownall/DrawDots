@@ -30,12 +30,18 @@
         {
             this.openGLWindow = new SharpGL.OpenGLControl();
             this.leftPanel = new System.Windows.Forms.Panel();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel7 = new System.Windows.Forms.FlowLayoutPanel();
+            this.upButton = new System.Windows.Forms.Button();
+            this.downButton = new System.Windows.Forms.Button();
+            this.flowLayoutPanel8 = new System.Windows.Forms.FlowLayoutPanel();
+            this.leftButton = new System.Windows.Forms.Button();
+            this.rightButton = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.SaveData = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.pointsGridView = new System.Windows.Forms.DataGridView();
-            this.X = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Y = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
@@ -52,16 +58,16 @@
             this.buttonNewGroup = new System.Windows.Forms.Button();
             this.buttonDeleteGroup = new System.Windows.Forms.Button();
             this.checkBoxDeletePointMode = new System.Windows.Forms.CheckBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
-            this.upButton = new System.Windows.Forms.Button();
-            this.downButton = new System.Windows.Forms.Button();
-            this.leftButton = new System.Windows.Forms.Button();
-            this.rightButton = new System.Windows.Forms.Button();
-            this.flowLayoutPanel7 = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel8 = new System.Windows.Forms.FlowLayoutPanel();
+            this.X = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Y = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.flowLayoutPanel9 = new System.Windows.Forms.FlowLayoutPanel();
+            this.deleteDotInTableButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.openGLWindow)).BeginInit();
             this.leftPanel.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.flowLayoutPanel6.SuspendLayout();
+            this.flowLayoutPanel7.SuspendLayout();
+            this.flowLayoutPanel8.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pointsGridView)).BeginInit();
@@ -73,10 +79,7 @@
             this.groupBox1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            this.flowLayoutPanel6.SuspendLayout();
-            this.flowLayoutPanel7.SuspendLayout();
-            this.flowLayoutPanel8.SuspendLayout();
+            this.flowLayoutPanel9.SuspendLayout();
             this.SuspendLayout();
             // 
             // openGLWindow
@@ -91,7 +94,7 @@
             this.openGLWindow.OpenGLVersion = SharpGL.Version.OpenGLVersion.OpenGL2_1;
             this.openGLWindow.RenderContextType = SharpGL.RenderContextType.DIBSection;
             this.openGLWindow.RenderTrigger = SharpGL.RenderTrigger.TimerBased;
-            this.openGLWindow.Size = new System.Drawing.Size(888, 702);
+            this.openGLWindow.Size = new System.Drawing.Size(888, 762);
             this.openGLWindow.TabIndex = 0;
             this.openGLWindow.OpenGLDraw += new SharpGL.RenderEventHandler(this.openGLWindow_OpenGLDraw);
             this.openGLWindow.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.openGLWindow_KeyPress);
@@ -99,6 +102,8 @@
             // 
             // leftPanel
             // 
+            this.leftPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.leftPanel.Controls.Add(this.groupBox5);
             this.leftPanel.Controls.Add(this.groupBox3);
             this.leftPanel.Controls.Add(this.groupBox4);
@@ -106,14 +111,99 @@
             this.leftPanel.Controls.Add(this.groupBox1);
             this.leftPanel.Location = new System.Drawing.Point(0, 0);
             this.leftPanel.Name = "leftPanel";
-            this.leftPanel.Size = new System.Drawing.Size(211, 702);
+            this.leftPanel.Size = new System.Drawing.Size(211, 762);
             this.leftPanel.TabIndex = 1;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.AutoSize = true;
+            this.groupBox5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.groupBox5.Controls.Add(this.flowLayoutPanel6);
+            this.groupBox5.Location = new System.Drawing.Point(15, 163);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(174, 89);
+            this.groupBox5.TabIndex = 14;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Перемещение группы";
+            // 
+            // flowLayoutPanel6
+            // 
+            this.flowLayoutPanel6.AutoSize = true;
+            this.flowLayoutPanel6.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanel6.Controls.Add(this.flowLayoutPanel7);
+            this.flowLayoutPanel6.Controls.Add(this.flowLayoutPanel8);
+            this.flowLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel6.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel6.Location = new System.Drawing.Point(3, 16);
+            this.flowLayoutPanel6.Name = "flowLayoutPanel6";
+            this.flowLayoutPanel6.Size = new System.Drawing.Size(168, 70);
+            this.flowLayoutPanel6.TabIndex = 0;
+            // 
+            // flowLayoutPanel7
+            // 
+            this.flowLayoutPanel7.AutoSize = true;
+            this.flowLayoutPanel7.Controls.Add(this.upButton);
+            this.flowLayoutPanel7.Controls.Add(this.downButton);
+            this.flowLayoutPanel7.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel7.Name = "flowLayoutPanel7";
+            this.flowLayoutPanel7.Size = new System.Drawing.Size(162, 29);
+            this.flowLayoutPanel7.TabIndex = 4;
+            // 
+            // upButton
+            // 
+            this.upButton.Location = new System.Drawing.Point(3, 3);
+            this.upButton.Name = "upButton";
+            this.upButton.Size = new System.Drawing.Size(75, 23);
+            this.upButton.TabIndex = 0;
+            this.upButton.Text = "Вверх";
+            this.upButton.UseVisualStyleBackColor = true;
+            this.upButton.Click += new System.EventHandler(this.upButton_Click);
+            // 
+            // downButton
+            // 
+            this.downButton.Location = new System.Drawing.Point(84, 3);
+            this.downButton.Name = "downButton";
+            this.downButton.Size = new System.Drawing.Size(75, 23);
+            this.downButton.TabIndex = 1;
+            this.downButton.Text = "Вниз";
+            this.downButton.UseVisualStyleBackColor = true;
+            this.downButton.Click += new System.EventHandler(this.downButton_Click);
+            // 
+            // flowLayoutPanel8
+            // 
+            this.flowLayoutPanel8.AutoSize = true;
+            this.flowLayoutPanel8.Controls.Add(this.leftButton);
+            this.flowLayoutPanel8.Controls.Add(this.rightButton);
+            this.flowLayoutPanel8.Location = new System.Drawing.Point(3, 38);
+            this.flowLayoutPanel8.Name = "flowLayoutPanel8";
+            this.flowLayoutPanel8.Size = new System.Drawing.Size(162, 29);
+            this.flowLayoutPanel8.TabIndex = 5;
+            // 
+            // leftButton
+            // 
+            this.leftButton.Location = new System.Drawing.Point(3, 3);
+            this.leftButton.Name = "leftButton";
+            this.leftButton.Size = new System.Drawing.Size(75, 23);
+            this.leftButton.TabIndex = 2;
+            this.leftButton.Text = "Влево";
+            this.leftButton.UseVisualStyleBackColor = true;
+            this.leftButton.Click += new System.EventHandler(this.leftButton_Click);
+            // 
+            // rightButton
+            // 
+            this.rightButton.Location = new System.Drawing.Point(84, 3);
+            this.rightButton.Name = "rightButton";
+            this.rightButton.Size = new System.Drawing.Size(75, 23);
+            this.rightButton.TabIndex = 3;
+            this.rightButton.Text = "Вправо";
+            this.rightButton.UseVisualStyleBackColor = true;
+            this.rightButton.Click += new System.EventHandler(this.rightButton_Click);
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.SaveData);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox3.Location = new System.Drawing.Point(0, 614);
+            this.groupBox3.Location = new System.Drawing.Point(0, 674);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(211, 88);
             this.groupBox3.TabIndex = 13;
@@ -132,10 +222,10 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.pointsGridView);
+            this.groupBox4.Controls.Add(this.flowLayoutPanel9);
             this.groupBox4.Location = new System.Drawing.Point(18, 414);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(168, 165);
+            this.groupBox4.Size = new System.Drawing.Size(168, 203);
             this.groupBox4.TabIndex = 12;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Точки";
@@ -143,31 +233,23 @@
             // pointsGridView
             // 
             this.pointsGridView.AllowUserToAddRows = false;
+            this.pointsGridView.AllowUserToResizeColumns = false;
+            this.pointsGridView.AllowUserToResizeRows = false;
+            this.pointsGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pointsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.pointsGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.X,
             this.Y});
-            this.pointsGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pointsGridView.Location = new System.Drawing.Point(3, 16);
+            this.pointsGridView.Location = new System.Drawing.Point(3, 3);
             this.pointsGridView.Name = "pointsGridView";
             this.pointsGridView.ReadOnly = true;
-            this.pointsGridView.Size = new System.Drawing.Size(162, 146);
+            this.pointsGridView.RowHeadersVisible = false;
+            this.pointsGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.pointsGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.pointsGridView.Size = new System.Drawing.Size(155, 146);
             this.pointsGridView.TabIndex = 0;
             this.pointsGridView.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.pointsGridView_UserDeletingRow);
-            // 
-            // X
-            // 
-            this.X.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.X.HeaderText = "X";
-            this.X.Name = "X";
-            this.X.ReadOnly = true;
-            // 
-            // Y
-            // 
-            this.Y.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Y.HeaderText = "Y";
-            this.Y.Name = "Y";
-            this.Y.ReadOnly = true;
             // 
             // groupBox2
             // 
@@ -341,96 +423,53 @@
             this.checkBoxDeletePointMode.Text = "Удаление точек";
             this.checkBoxDeletePointMode.UseVisualStyleBackColor = true;
             // 
-            // groupBox5
+            // X
             // 
-            this.groupBox5.AutoSize = true;
-            this.groupBox5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.groupBox5.Controls.Add(this.flowLayoutPanel6);
-            this.groupBox5.Location = new System.Drawing.Point(15, 163);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(174, 89);
-            this.groupBox5.TabIndex = 14;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Перемещение группы";
+            this.X.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.X.HeaderText = "X";
+            this.X.Name = "X";
+            this.X.ReadOnly = true;
+            this.X.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.X.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // flowLayoutPanel6
+            // Y
             // 
-            this.flowLayoutPanel6.AutoSize = true;
-            this.flowLayoutPanel6.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel6.Controls.Add(this.flowLayoutPanel7);
-            this.flowLayoutPanel6.Controls.Add(this.flowLayoutPanel8);
-            this.flowLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel6.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel6.Location = new System.Drawing.Point(3, 16);
-            this.flowLayoutPanel6.Name = "flowLayoutPanel6";
-            this.flowLayoutPanel6.Size = new System.Drawing.Size(168, 70);
-            this.flowLayoutPanel6.TabIndex = 0;
+            this.Y.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Y.HeaderText = "Y";
+            this.Y.Name = "Y";
+            this.Y.ReadOnly = true;
+            this.Y.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Y.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // upButton
+            // flowLayoutPanel9
             // 
-            this.upButton.Location = new System.Drawing.Point(3, 3);
-            this.upButton.Name = "upButton";
-            this.upButton.Size = new System.Drawing.Size(75, 23);
-            this.upButton.TabIndex = 0;
-            this.upButton.Text = "Вверх";
-            this.upButton.UseVisualStyleBackColor = true;
-            this.upButton.Click += new System.EventHandler(this.upButton_Click);
+            this.flowLayoutPanel9.AutoScroll = true;
+            this.flowLayoutPanel9.AutoSize = true;
+            this.flowLayoutPanel9.Controls.Add(this.pointsGridView);
+            this.flowLayoutPanel9.Controls.Add(this.deleteDotInTableButton);
+            this.flowLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel9.Location = new System.Drawing.Point(3, 16);
+            this.flowLayoutPanel9.Name = "flowLayoutPanel9";
+            this.flowLayoutPanel9.Size = new System.Drawing.Size(162, 184);
+            this.flowLayoutPanel9.TabIndex = 1;
             // 
-            // downButton
+            // deleteDotInTableButton
             // 
-            this.downButton.Location = new System.Drawing.Point(84, 3);
-            this.downButton.Name = "downButton";
-            this.downButton.Size = new System.Drawing.Size(75, 23);
-            this.downButton.TabIndex = 1;
-            this.downButton.Text = "Вниз";
-            this.downButton.UseVisualStyleBackColor = true;
-            this.downButton.Click += new System.EventHandler(this.downButton_Click);
-            // 
-            // leftButton
-            // 
-            this.leftButton.Location = new System.Drawing.Point(3, 3);
-            this.leftButton.Name = "leftButton";
-            this.leftButton.Size = new System.Drawing.Size(75, 23);
-            this.leftButton.TabIndex = 2;
-            this.leftButton.Text = "Влево";
-            this.leftButton.UseVisualStyleBackColor = true;
-            this.leftButton.Click += new System.EventHandler(this.leftButton_Click);
-            // 
-            // rightButton
-            // 
-            this.rightButton.Location = new System.Drawing.Point(84, 3);
-            this.rightButton.Name = "rightButton";
-            this.rightButton.Size = new System.Drawing.Size(75, 23);
-            this.rightButton.TabIndex = 3;
-            this.rightButton.Text = "Вправо";
-            this.rightButton.UseVisualStyleBackColor = true;
-            this.rightButton.Click += new System.EventHandler(this.rightButton_Click);
-            // 
-            // flowLayoutPanel7
-            // 
-            this.flowLayoutPanel7.AutoSize = true;
-            this.flowLayoutPanel7.Controls.Add(this.upButton);
-            this.flowLayoutPanel7.Controls.Add(this.downButton);
-            this.flowLayoutPanel7.Location = new System.Drawing.Point(3, 3);
-            this.flowLayoutPanel7.Name = "flowLayoutPanel7";
-            this.flowLayoutPanel7.Size = new System.Drawing.Size(162, 29);
-            this.flowLayoutPanel7.TabIndex = 4;
-            // 
-            // flowLayoutPanel8
-            // 
-            this.flowLayoutPanel8.AutoSize = true;
-            this.flowLayoutPanel8.Controls.Add(this.leftButton);
-            this.flowLayoutPanel8.Controls.Add(this.rightButton);
-            this.flowLayoutPanel8.Location = new System.Drawing.Point(3, 38);
-            this.flowLayoutPanel8.Name = "flowLayoutPanel8";
-            this.flowLayoutPanel8.Size = new System.Drawing.Size(162, 29);
-            this.flowLayoutPanel8.TabIndex = 5;
+            this.deleteDotInTableButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.deleteDotInTableButton.Location = new System.Drawing.Point(3, 155);
+            this.deleteDotInTableButton.Name = "deleteDotInTableButton";
+            this.deleteDotInTableButton.Size = new System.Drawing.Size(155, 23);
+            this.deleteDotInTableButton.TabIndex = 1;
+            this.deleteDotInTableButton.Text = "Удалить точку";
+            this.deleteDotInTableButton.UseVisualStyleBackColor = true;
+            this.deleteDotInTableButton.Click += new System.EventHandler(this.deleteDotInTableButton_Click);
             // 
             // GraphicalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1105, 702);
+            this.ClientSize = new System.Drawing.Size(1105, 762);
             this.Controls.Add(this.leftPanel);
             this.Controls.Add(this.openGLWindow);
             this.Name = "GraphicalForm";
@@ -439,8 +478,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.openGLWindow)).EndInit();
             this.leftPanel.ResumeLayout(false);
             this.leftPanel.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.flowLayoutPanel6.ResumeLayout(false);
+            this.flowLayoutPanel6.PerformLayout();
+            this.flowLayoutPanel7.ResumeLayout(false);
+            this.flowLayoutPanel8.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pointsGridView)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.flowLayoutPanel4.ResumeLayout(false);
@@ -455,12 +501,7 @@
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.flowLayoutPanel2.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            this.flowLayoutPanel6.ResumeLayout(false);
-            this.flowLayoutPanel6.PerformLayout();
-            this.flowLayoutPanel7.ResumeLayout(false);
-            this.flowLayoutPanel8.ResumeLayout(false);
+            this.flowLayoutPanel9.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -487,8 +528,6 @@
         private System.Windows.Forms.Button chooseColor;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.DataGridView pointsGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn X;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Y;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button SaveData;
         private System.Windows.Forms.GroupBox groupBox5;
@@ -499,5 +538,9 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel8;
         private System.Windows.Forms.Button leftButton;
         private System.Windows.Forms.Button rightButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn X;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Y;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel9;
+        private System.Windows.Forms.Button deleteDotInTableButton;
     }
 }

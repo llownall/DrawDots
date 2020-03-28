@@ -27,6 +27,7 @@ namespace DrawDots
             comboBoxGroups.SelectedIndex = 0;
             labelPointThicknessValue.Text = Groups[comboBoxGroups.SelectedIndex].groupThickness.ToString();
             trackBarPointThickness.Value = Groups[comboBoxGroups.SelectedIndex].groupThickness;
+            handleDeleteDotButtonEnable();
         }
 
 
@@ -99,6 +100,7 @@ namespace DrawDots
                 Groups[comboBoxGroups.SelectedIndex].elements.Add(newPoint);
                 pointsGridView.Rows.Add(newPoint.x, newPoint.y);
             }
+            handleDeleteDotButtonEnable();
         }
 
         private void trackBarPointThickness_Scroll(object sender, EventArgs e)
@@ -130,6 +132,7 @@ namespace DrawDots
             Groups.Add(new Group($"Группа {Groups.Last().getNumberOfGroup() + 1}"));
             updateComboBox();
             comboBoxGroups.SelectedIndex = Groups.Count - 1;
+            handleDeleteDotButtonEnable();
         }
 
         private void buttonDeleteGroup_Click(object sender, EventArgs e)
@@ -143,6 +146,7 @@ namespace DrawDots
                 Groups = new List<Group> { new Group("Группа 1") };
             }
             updateComboBox();
+            handleDeleteDotButtonEnable();
             comboBoxGroups.SelectedIndex = 0;
         }
 
@@ -165,6 +169,7 @@ namespace DrawDots
         private void pointsGridView_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
             Groups[comboBoxGroups.SelectedIndex].elements.RemoveAt(e.Row.Index);
+            handleDeleteDotButtonEnable();
         }
         private void chooseColor_Click(object sender, EventArgs e)
         {
@@ -214,6 +219,22 @@ namespace DrawDots
         private void rightButton_Click(object sender, EventArgs e)
         {
             Groups[comboBoxGroups.SelectedIndex].move(x: 1);
+        }
+
+        private void deleteDotInTableButton_Click(object sender, EventArgs e)
+        {
+            Groups[comboBoxGroups.SelectedIndex].elements.RemoveAt(pointsGridView.CurrentRow.Index);
+            pointsGridView.Rows.Clear();
+            foreach (MyPoint groupPoint in Groups[comboBoxGroups.SelectedIndex].elements)
+            {
+                pointsGridView.Rows.Add(groupPoint.x, groupPoint.y);
+            }
+            handleDeleteDotButtonEnable();
+        }
+
+        private void handleDeleteDotButtonEnable()
+        {
+            deleteDotInTableButton.Enabled = !(Groups[comboBoxGroups.SelectedIndex].elements.Count == 0);
         }
     }
 }
