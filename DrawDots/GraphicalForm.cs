@@ -43,8 +43,8 @@ namespace DrawDots
 
                     gl.Color(group.groupColor.R, group.groupColor.G, group.groupColor.B);
                     gl.Vertex(
-                            group.elements[0].x + Groups[comboBoxGroups.SelectedIndex].transformation.xTransition,
-                            group.elements[0].y + Groups[comboBoxGroups.SelectedIndex].transformation.yTransition
+                            group.elements[0].x + group.transformation.xTransition,
+                            group.elements[0].y + group.transformation.yTransition
                             );
 
                     if (group == comboBoxGroups.SelectedItem)
@@ -60,8 +60,8 @@ namespace DrawDots
                     foreach (MyPoint point in group.rotatedElements())
                     {
                         gl.Vertex(
-                            point.x + Groups[comboBoxGroups.SelectedIndex].transformation.xTransition,
-                            point.y + Groups[comboBoxGroups.SelectedIndex].transformation.yTransition
+                            point.x + group.transformation.xTransition,
+                            point.y + group.transformation.yTransition
                             );
                     }
 
