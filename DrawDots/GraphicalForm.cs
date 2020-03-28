@@ -29,7 +29,7 @@ namespace DrawDots
         {
             OpenGL gl = this.openGLWindow.OpenGL;
             gl.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT);
-            //gl.Enable(OpenGL.GL_POINT_SMOOTH);
+            gl.Enable(OpenGL.GL_POINT_SMOOTH);
             gl.MatrixMode(SharpGL.Enumerations.MatrixMode.Projection);
             gl.LoadIdentity();
             gl.Ortho2D(0, openGLWindow.Size.Width, 0, openGLWindow.Size.Height);
