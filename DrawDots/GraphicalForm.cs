@@ -49,7 +49,7 @@ namespace DrawDots
 
                     if (group == comboBoxGroups.SelectedItem)
                     {
-                        double k = DateTime.Now.Millisecond / 500 == 0 ? 1 : 0;
+                        double k = DateTime.Now.Millisecond / 700 == 0 ? 1 : 0;
                         gl.Color(group.groupColor.R * k, group.groupColor.G * k, group.groupColor.B * k);
                     }
                     else
@@ -91,6 +91,7 @@ namespace DrawDots
                 if (result == DialogResult.Yes)
                 {
                     trackBarRotation.Value = 0;
+                    Groups[comboBoxGroups.SelectedIndex].setRotationAngle(trackBarRotation.Value);
                 }
                 TopMost = true;
             }
