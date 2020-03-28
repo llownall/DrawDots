@@ -56,7 +56,10 @@ namespace DrawDots
                 }
                 foreach (MyPoint point in group.elements)
                 {
-                    gl.Vertex(point.x, point.y);
+                    gl.Vertex(
+                        point.x + Groups[comboBoxGroups.SelectedIndex].transformation.xTransition,
+                        point.y + Groups[comboBoxGroups.SelectedIndex].transformation.yTransition
+                        );
                 }
                 gl.End();
             }
@@ -70,7 +73,10 @@ namespace DrawDots
 
         private void openGLWindow_MouseClick(object sender, MouseEventArgs e)
         {
-            MyPoint newPoint = new MyPoint(e.X, openGLWindow.Size.Height - e.Y);
+            MyPoint newPoint = new MyPoint(
+                e.X - Groups[comboBoxGroups.SelectedIndex].transformation.xTransition, 
+                openGLWindow.Size.Height - e.Y - Groups[comboBoxGroups.SelectedIndex].transformation.yTransition
+                );
 
             if (checkBoxDeletePointMode.Checked)
             {
@@ -168,6 +174,46 @@ namespace DrawDots
             MyDialog.Color = Groups[comboBoxGroups.SelectedIndex].groupColor;
             if (MyDialog.ShowDialog() == DialogResult.OK)
                 Groups[comboBoxGroups.SelectedIndex].setGroupColor(MyDialog.Color);
+        }
+
+        private void openGLWindow_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            switch (e.KeyChar.ToString())
+            {
+                case "w":
+                    Groups[comboBoxGroups.SelectedIndex].move(y: 1);
+                    break;
+                case "s":
+                    Groups[comboBoxGroups.SelectedIndex].move(y: -1);
+                    break;
+                case "a":
+                    Groups[comboBoxGroups.SelectedIndex].move(x: -1);
+                    break;
+                case "d":
+                    Groups[comboBoxGroups.SelectedIndex].move(x: 1);
+                    break;
+                default:
+                    return;
+            }
+        }
+
+        private void upButton_Click(object sender, EventArgs e)
+        {
+            Groups[comboBoxGroups.SelectedIndex].move(y: 1);
+        }
+
+        private void downButton_Click(object sender, EventArgs e)
+        {
+            Groups[comboBoxGroups.SelectedIndex].move(y: -1);
+        }
+
+        private void leftButton_Click(object sender, EventArgs e)
+        {
+            Groups[comboBoxGroups.SelectedIndex].move(x: -1);
+        }
+        private void rightButton_Click(object sender, EventArgs e)
+        {
+            Groups[comboBoxGroups.SelectedIndex].move(x: 1);
         }
     }
 }
