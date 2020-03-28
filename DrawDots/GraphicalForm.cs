@@ -41,27 +41,31 @@ namespace DrawDots
 
             foreach (Group group in Groups)
             {
-                gl.PointSize(group.groupThickness);
+                if (group.elements.Count > 0)
+                {
+                    gl.PointSize(group.groupThickness);
+                    gl.Begin(OpenGL.GL_POINTS);
 
-                gl.Begin(OpenGL.GL_POINTS);
+                    if (group == comboBoxGroups.SelectedItem)
+                    {
+                        double k = DateTime.Now.Millisecond / 900 == 0 ? 1 : 0;
+                        gl.Color(group.groupColor.R * k, group.groupColor.G * k, group.groupColor.B * k);
+                    }
+                    else
+                    {
+                        gl.Color(group.groupColor.R, group.groupColor.G, group.groupColor.B);
+                    }
 
-                if (group == comboBoxGroups.SelectedItem)
-                {
-                    Color groupColor = Groups[comboBoxGroups.SelectedIndex].groupColor;
-                    gl.Color(groupColor.R, groupColor.G, groupColor.B);
+                    foreach (MyPoint point in group.rotatedElements())
+                    {
+                        gl.Vertex(
+                            point.x + Groups[comboBoxGroups.SelectedIndex].transformation.xTransition,
+                            point.y + Groups[comboBoxGroups.SelectedIndex].transformation.yTransition
+                            );
+                    }
+
+                    gl.End();
                 }
-                else
-                {
-                    gl.Color(1f, 1f, 1f);
-                }
-                foreach (MyPoint point in group.elements)
-                {
-                    gl.Vertex(
-                        point.x + Groups[comboBoxGroups.SelectedIndex].transformation.xTransition,
-                        point.y + Groups[comboBoxGroups.SelectedIndex].transformation.yTransition
-                        );
-                }
-                gl.End();
             }
         }
 
@@ -73,31 +77,50 @@ namespace DrawDots
 
         private void openGLWindow_MouseClick(object sender, MouseEventArgs e)
         {
-            MyPoint newPoint = new MyPoint(
-                e.X - Groups[comboBoxGroups.SelectedIndex].transformation.xTransition, 
-                openGLWindow.Size.Height - e.Y - Groups[comboBoxGroups.SelectedIndex].transformation.yTransition
-                );
-
-            if (checkBoxDeletePointMode.Checked)
+            if (trackBarRotation.Value != 0)
             {
-                foreach (MyPoint point in Groups[comboBoxGroups.SelectedIndex].elements)
+                DialogResult result = MessageBox.Show(
+                    "Добавлять или удалять точки можно только при нулевом угле поворота. Сбросить угол поворота?",
+                    "Внимание",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning,
+                    MessageBoxDefaultButton.Button1,
+                    MessageBoxOptions.DefaultDesktopOnly
+                );
+                if (result == DialogResult.Yes)
                 {
-                    if (point.isPointed(newPoint, Groups[comboBoxGroups.SelectedIndex].groupThickness / 2))
-                    {
-                        Groups[comboBoxGroups.SelectedIndex].elements.Remove(point);
-                        pointsGridView.Rows.Clear();
-                        foreach (MyPoint groupPoint in Groups[comboBoxGroups.SelectedIndex].elements)
-                        {
-                            pointsGridView.Rows.Add(groupPoint.x, groupPoint.y);
-                        }
-                        break;
-                    }
+                    trackBarRotation.Value = 0;
                 }
+                TopMost = true;
             }
             else
             {
-                Groups[comboBoxGroups.SelectedIndex].elements.Add(newPoint);
-                pointsGridView.Rows.Add(newPoint.x, newPoint.y);
+                MyPoint newPoint = new MyPoint(
+                e.X - Groups[comboBoxGroups.SelectedIndex].transformation.xTransition,
+                openGLWindow.Size.Height - e.Y - Groups[comboBoxGroups.SelectedIndex].transformation.yTransition
+                );
+
+                if (checkBoxDeletePointMode.Checked)
+                {
+                    foreach (MyPoint point in Groups[comboBoxGroups.SelectedIndex].elements)
+                    {
+                        if (point.isPointed(newPoint, Groups[comboBoxGroups.SelectedIndex].groupThickness / 2))
+                        {
+                            Groups[comboBoxGroups.SelectedIndex].elements.Remove(point);
+                            pointsGridView.Rows.Clear();
+                            foreach (MyPoint groupPoint in Groups[comboBoxGroups.SelectedIndex].elements)
+                            {
+                                pointsGridView.Rows.Add(groupPoint.x, groupPoint.y);
+                            }
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    Groups[comboBoxGroups.SelectedIndex].elements.Add(newPoint);
+                    pointsGridView.Rows.Add(newPoint.x, newPoint.y);
+                }
             }
         }
 
@@ -123,6 +146,7 @@ namespace DrawDots
             {
                 pointsGridView.Rows.Add(groupPoint.x, groupPoint.y);
             }
+            trackBarRotation.Value = Groups[comboBoxGroups.SelectedIndex].transformation.rotationAngle;
         }
 
         private void buttonNewGroup_Click(object sender, EventArgs e)
@@ -214,6 +238,11 @@ namespace DrawDots
         private void rightButton_Click(object sender, EventArgs e)
         {
             Groups[comboBoxGroups.SelectedIndex].move(x: 1);
+        }
+
+        private void trackBarRotation_Scroll(object sender, EventArgs e)
+        {
+            Groups[comboBoxGroups.SelectedIndex].setRotationAngle(trackBarRotation.Value);
         }
     }
 }

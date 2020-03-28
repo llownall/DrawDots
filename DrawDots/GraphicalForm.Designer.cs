@@ -30,6 +30,16 @@
         {
             this.openGLWindow = new SharpGL.OpenGLControl();
             this.leftPanel = new System.Windows.Forms.Panel();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.trackBarRotation = new System.Windows.Forms.TrackBar();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel7 = new System.Windows.Forms.FlowLayoutPanel();
+            this.upButton = new System.Windows.Forms.Button();
+            this.downButton = new System.Windows.Forms.Button();
+            this.flowLayoutPanel8 = new System.Windows.Forms.FlowLayoutPanel();
+            this.leftButton = new System.Windows.Forms.Button();
+            this.rightButton = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.SaveData = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -52,16 +62,14 @@
             this.buttonNewGroup = new System.Windows.Forms.Button();
             this.buttonDeleteGroup = new System.Windows.Forms.Button();
             this.checkBoxDeletePointMode = new System.Windows.Forms.CheckBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
-            this.upButton = new System.Windows.Forms.Button();
-            this.downButton = new System.Windows.Forms.Button();
-            this.leftButton = new System.Windows.Forms.Button();
-            this.rightButton = new System.Windows.Forms.Button();
-            this.flowLayoutPanel7 = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel8 = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.openGLWindow)).BeginInit();
             this.leftPanel.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarRotation)).BeginInit();
+            this.groupBox5.SuspendLayout();
+            this.flowLayoutPanel6.SuspendLayout();
+            this.flowLayoutPanel7.SuspendLayout();
+            this.flowLayoutPanel8.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pointsGridView)).BeginInit();
@@ -73,10 +81,6 @@
             this.groupBox1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            this.flowLayoutPanel6.SuspendLayout();
-            this.flowLayoutPanel7.SuspendLayout();
-            this.flowLayoutPanel8.SuspendLayout();
             this.SuspendLayout();
             // 
             // openGLWindow
@@ -91,7 +95,7 @@
             this.openGLWindow.OpenGLVersion = SharpGL.Version.OpenGLVersion.OpenGL2_1;
             this.openGLWindow.RenderContextType = SharpGL.RenderContextType.DIBSection;
             this.openGLWindow.RenderTrigger = SharpGL.RenderTrigger.TimerBased;
-            this.openGLWindow.Size = new System.Drawing.Size(888, 702);
+            this.openGLWindow.Size = new System.Drawing.Size(888, 738);
             this.openGLWindow.TabIndex = 0;
             this.openGLWindow.OpenGLDraw += new SharpGL.RenderEventHandler(this.openGLWindow_OpenGLDraw);
             this.openGLWindow.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.openGLWindow_KeyPress);
@@ -99,6 +103,7 @@
             // 
             // leftPanel
             // 
+            this.leftPanel.Controls.Add(this.groupBox6);
             this.leftPanel.Controls.Add(this.groupBox5);
             this.leftPanel.Controls.Add(this.groupBox3);
             this.leftPanel.Controls.Add(this.groupBox4);
@@ -106,25 +111,132 @@
             this.leftPanel.Controls.Add(this.groupBox1);
             this.leftPanel.Location = new System.Drawing.Point(0, 0);
             this.leftPanel.Name = "leftPanel";
-            this.leftPanel.Size = new System.Drawing.Size(211, 702);
+            this.leftPanel.Size = new System.Drawing.Size(211, 738);
             this.leftPanel.TabIndex = 1;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.trackBarRotation);
+            this.groupBox6.Location = new System.Drawing.Point(18, 595);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(168, 69);
+            this.groupBox6.TabIndex = 1;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Вращение";
+            // 
+            // trackBarRotation
+            // 
+            this.trackBarRotation.LargeChange = 30;
+            this.trackBarRotation.Location = new System.Drawing.Point(6, 19);
+            this.trackBarRotation.Maximum = 180;
+            this.trackBarRotation.Name = "trackBarRotation";
+            this.trackBarRotation.Size = new System.Drawing.Size(159, 45);
+            this.trackBarRotation.SmallChange = 30;
+            this.trackBarRotation.TabIndex = 0;
+            this.trackBarRotation.TickFrequency = 30;
+            this.trackBarRotation.Scroll += new System.EventHandler(this.trackBarRotation_Scroll);
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.AutoSize = true;
+            this.groupBox5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.groupBox5.Controls.Add(this.flowLayoutPanel6);
+            this.groupBox5.Location = new System.Drawing.Point(15, 163);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(174, 89);
+            this.groupBox5.TabIndex = 14;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Перемещение группы";
+            // 
+            // flowLayoutPanel6
+            // 
+            this.flowLayoutPanel6.AutoSize = true;
+            this.flowLayoutPanel6.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanel6.Controls.Add(this.flowLayoutPanel7);
+            this.flowLayoutPanel6.Controls.Add(this.flowLayoutPanel8);
+            this.flowLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel6.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel6.Location = new System.Drawing.Point(3, 16);
+            this.flowLayoutPanel6.Name = "flowLayoutPanel6";
+            this.flowLayoutPanel6.Size = new System.Drawing.Size(168, 70);
+            this.flowLayoutPanel6.TabIndex = 0;
+            // 
+            // flowLayoutPanel7
+            // 
+            this.flowLayoutPanel7.AutoSize = true;
+            this.flowLayoutPanel7.Controls.Add(this.upButton);
+            this.flowLayoutPanel7.Controls.Add(this.downButton);
+            this.flowLayoutPanel7.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel7.Name = "flowLayoutPanel7";
+            this.flowLayoutPanel7.Size = new System.Drawing.Size(162, 29);
+            this.flowLayoutPanel7.TabIndex = 4;
+            // 
+            // upButton
+            // 
+            this.upButton.Location = new System.Drawing.Point(3, 3);
+            this.upButton.Name = "upButton";
+            this.upButton.Size = new System.Drawing.Size(75, 23);
+            this.upButton.TabIndex = 0;
+            this.upButton.Text = "Вверх";
+            this.upButton.UseVisualStyleBackColor = true;
+            this.upButton.Click += new System.EventHandler(this.upButton_Click);
+            // 
+            // downButton
+            // 
+            this.downButton.Location = new System.Drawing.Point(84, 3);
+            this.downButton.Name = "downButton";
+            this.downButton.Size = new System.Drawing.Size(75, 23);
+            this.downButton.TabIndex = 1;
+            this.downButton.Text = "Вниз";
+            this.downButton.UseVisualStyleBackColor = true;
+            this.downButton.Click += new System.EventHandler(this.downButton_Click);
+            // 
+            // flowLayoutPanel8
+            // 
+            this.flowLayoutPanel8.AutoSize = true;
+            this.flowLayoutPanel8.Controls.Add(this.leftButton);
+            this.flowLayoutPanel8.Controls.Add(this.rightButton);
+            this.flowLayoutPanel8.Location = new System.Drawing.Point(3, 38);
+            this.flowLayoutPanel8.Name = "flowLayoutPanel8";
+            this.flowLayoutPanel8.Size = new System.Drawing.Size(162, 29);
+            this.flowLayoutPanel8.TabIndex = 5;
+            // 
+            // leftButton
+            // 
+            this.leftButton.Location = new System.Drawing.Point(3, 3);
+            this.leftButton.Name = "leftButton";
+            this.leftButton.Size = new System.Drawing.Size(75, 23);
+            this.leftButton.TabIndex = 2;
+            this.leftButton.Text = "Влево";
+            this.leftButton.UseVisualStyleBackColor = true;
+            this.leftButton.Click += new System.EventHandler(this.leftButton_Click);
+            // 
+            // rightButton
+            // 
+            this.rightButton.Location = new System.Drawing.Point(84, 3);
+            this.rightButton.Name = "rightButton";
+            this.rightButton.Size = new System.Drawing.Size(75, 23);
+            this.rightButton.TabIndex = 3;
+            this.rightButton.Text = "Вправо";
+            this.rightButton.UseVisualStyleBackColor = true;
+            this.rightButton.Click += new System.EventHandler(this.rightButton_Click);
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.SaveData);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox3.Location = new System.Drawing.Point(0, 614);
+            this.groupBox3.Location = new System.Drawing.Point(0, 680);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(211, 88);
+            this.groupBox3.Size = new System.Drawing.Size(211, 58);
             this.groupBox3.TabIndex = 13;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Сохранение результатов";
             // 
             // SaveData
             // 
-            this.SaveData.Location = new System.Drawing.Point(52, 31);
+            this.SaveData.Location = new System.Drawing.Point(52, 25);
             this.SaveData.Name = "SaveData";
-            this.SaveData.Size = new System.Drawing.Size(106, 45);
+            this.SaveData.Size = new System.Drawing.Size(106, 24);
             this.SaveData.TabIndex = 0;
             this.SaveData.Text = "Сохранить";
             this.SaveData.UseVisualStyleBackColor = true;
@@ -341,96 +453,11 @@
             this.checkBoxDeletePointMode.Text = "Удаление точек";
             this.checkBoxDeletePointMode.UseVisualStyleBackColor = true;
             // 
-            // groupBox5
-            // 
-            this.groupBox5.AutoSize = true;
-            this.groupBox5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.groupBox5.Controls.Add(this.flowLayoutPanel6);
-            this.groupBox5.Location = new System.Drawing.Point(15, 163);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(174, 89);
-            this.groupBox5.TabIndex = 14;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Перемещение группы";
-            // 
-            // flowLayoutPanel6
-            // 
-            this.flowLayoutPanel6.AutoSize = true;
-            this.flowLayoutPanel6.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel6.Controls.Add(this.flowLayoutPanel7);
-            this.flowLayoutPanel6.Controls.Add(this.flowLayoutPanel8);
-            this.flowLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel6.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel6.Location = new System.Drawing.Point(3, 16);
-            this.flowLayoutPanel6.Name = "flowLayoutPanel6";
-            this.flowLayoutPanel6.Size = new System.Drawing.Size(168, 70);
-            this.flowLayoutPanel6.TabIndex = 0;
-            // 
-            // upButton
-            // 
-            this.upButton.Location = new System.Drawing.Point(3, 3);
-            this.upButton.Name = "upButton";
-            this.upButton.Size = new System.Drawing.Size(75, 23);
-            this.upButton.TabIndex = 0;
-            this.upButton.Text = "Вверх";
-            this.upButton.UseVisualStyleBackColor = true;
-            this.upButton.Click += new System.EventHandler(this.upButton_Click);
-            // 
-            // downButton
-            // 
-            this.downButton.Location = new System.Drawing.Point(84, 3);
-            this.downButton.Name = "downButton";
-            this.downButton.Size = new System.Drawing.Size(75, 23);
-            this.downButton.TabIndex = 1;
-            this.downButton.Text = "Вниз";
-            this.downButton.UseVisualStyleBackColor = true;
-            this.downButton.Click += new System.EventHandler(this.downButton_Click);
-            // 
-            // leftButton
-            // 
-            this.leftButton.Location = new System.Drawing.Point(3, 3);
-            this.leftButton.Name = "leftButton";
-            this.leftButton.Size = new System.Drawing.Size(75, 23);
-            this.leftButton.TabIndex = 2;
-            this.leftButton.Text = "Влево";
-            this.leftButton.UseVisualStyleBackColor = true;
-            this.leftButton.Click += new System.EventHandler(this.leftButton_Click);
-            // 
-            // rightButton
-            // 
-            this.rightButton.Location = new System.Drawing.Point(84, 3);
-            this.rightButton.Name = "rightButton";
-            this.rightButton.Size = new System.Drawing.Size(75, 23);
-            this.rightButton.TabIndex = 3;
-            this.rightButton.Text = "Вправо";
-            this.rightButton.UseVisualStyleBackColor = true;
-            this.rightButton.Click += new System.EventHandler(this.rightButton_Click);
-            // 
-            // flowLayoutPanel7
-            // 
-            this.flowLayoutPanel7.AutoSize = true;
-            this.flowLayoutPanel7.Controls.Add(this.upButton);
-            this.flowLayoutPanel7.Controls.Add(this.downButton);
-            this.flowLayoutPanel7.Location = new System.Drawing.Point(3, 3);
-            this.flowLayoutPanel7.Name = "flowLayoutPanel7";
-            this.flowLayoutPanel7.Size = new System.Drawing.Size(162, 29);
-            this.flowLayoutPanel7.TabIndex = 4;
-            // 
-            // flowLayoutPanel8
-            // 
-            this.flowLayoutPanel8.AutoSize = true;
-            this.flowLayoutPanel8.Controls.Add(this.leftButton);
-            this.flowLayoutPanel8.Controls.Add(this.rightButton);
-            this.flowLayoutPanel8.Location = new System.Drawing.Point(3, 38);
-            this.flowLayoutPanel8.Name = "flowLayoutPanel8";
-            this.flowLayoutPanel8.Size = new System.Drawing.Size(162, 29);
-            this.flowLayoutPanel8.TabIndex = 5;
-            // 
             // GraphicalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1105, 702);
+            this.ClientSize = new System.Drawing.Size(1105, 738);
             this.Controls.Add(this.leftPanel);
             this.Controls.Add(this.openGLWindow);
             this.Name = "GraphicalForm";
@@ -439,6 +466,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.openGLWindow)).EndInit();
             this.leftPanel.ResumeLayout(false);
             this.leftPanel.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarRotation)).EndInit();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.flowLayoutPanel6.ResumeLayout(false);
+            this.flowLayoutPanel6.PerformLayout();
+            this.flowLayoutPanel7.ResumeLayout(false);
+            this.flowLayoutPanel8.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pointsGridView)).EndInit();
@@ -455,12 +491,6 @@
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.flowLayoutPanel2.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            this.flowLayoutPanel6.ResumeLayout(false);
-            this.flowLayoutPanel6.PerformLayout();
-            this.flowLayoutPanel7.ResumeLayout(false);
-            this.flowLayoutPanel8.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -499,5 +529,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel8;
         private System.Windows.Forms.Button leftButton;
         private System.Windows.Forms.Button rightButton;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.TrackBar trackBarRotation;
     }
 }

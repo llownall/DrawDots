@@ -13,11 +13,13 @@ namespace DrawDots.Models
     {
         public int xTransition { get; set; }
         public int yTransition { get; set; }
+        public int rotationAngle { get; set; }
 
         public GroupTransformation(int x, int y)
         {
             xTransition = x;
             yTransition = y;
+            rotationAngle = 0;
         }
     }
 
@@ -25,7 +27,7 @@ namespace DrawDots.Models
     {
         public readonly List<MyPoint> elements;
         public int groupThickness { get; private set; } = 5;
-        public Color groupColor { get; private set; } = Color.FromArgb(0, 255, 0);
+        public Color groupColor { get; private set; } = Color.FromArgb(255, 255, 255);
         public string name { get; private set; }
         public GroupTransformation transformation { get; private set; } = new GroupTransformation(0, 0);
 
@@ -79,6 +81,30 @@ namespace DrawDots.Models
             var tempTransform = transformation;
             tempTransform.xTransition += x;
             tempTransform.yTransition += y;
+            transformation = tempTransform;
+        }
+
+        public List<MyPoint> rotatedElements()
+        {
+            List<MyPoint> result = new List<MyPoint>();
+            foreach (MyPoint point in elements)
+            {
+                int _x = point.x - elements[0].x;
+                int _y = point.y - elements[0].y;
+
+                double angle = transformation.rotationAngle;
+                double x = _x * Math.Cos(angle / 180 * Math.PI) + _y * Math.Sin(angle / 180 * Math.PI);
+                double y = -_x * Math.Sin(angle / 180 * Math.PI) + _y * Math.Cos(angle / 180 * Math.PI);
+                
+                result.Add(new MyPoint(elements[0].x + (int)x, elements[0].y + (int)y));
+            }
+            return result;
+        }
+
+        public void setRotationAngle(int angle)
+        {
+            var tempTransform = transformation;
+            tempTransform.rotationAngle = angle;
             transformation = tempTransform;
         }
     }
