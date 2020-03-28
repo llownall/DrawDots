@@ -131,9 +131,9 @@
             // 
             this.trackBarRotation.LargeChange = 30;
             this.trackBarRotation.Location = new System.Drawing.Point(6, 19);
-            this.trackBarRotation.Maximum = 180;
+            this.trackBarRotation.Maximum = 360;
             this.trackBarRotation.Name = "trackBarRotation";
-            this.trackBarRotation.Size = new System.Drawing.Size(156, 56);
+            this.trackBarRotation.Size = new System.Drawing.Size(156, 45);
             this.trackBarRotation.SmallChange = 30;
             this.trackBarRotation.TabIndex = 0;
             this.trackBarRotation.TickFrequency = 30;
@@ -340,7 +340,7 @@
             this.flowLayoutPanel5.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel5.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel5.Name = "flowLayoutPanel5";
-            this.flowLayoutPanel5.Size = new System.Drawing.Size(158, 83);
+            this.flowLayoutPanel5.Size = new System.Drawing.Size(158, 70);
             this.flowLayoutPanel5.TabIndex = 11;
             // 
             // flowLayoutPanel3
@@ -350,7 +350,7 @@
             this.flowLayoutPanel3.Controls.Add(this.labelPointThicknessValue);
             this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(120, 15);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(109, 13);
             this.flowLayoutPanel3.TabIndex = 11;
             // 
             // labelPointThickness
@@ -358,26 +358,26 @@
             this.labelPointThickness.AutoSize = true;
             this.labelPointThickness.Location = new System.Drawing.Point(3, 0);
             this.labelPointThickness.Name = "labelPointThickness";
-            this.labelPointThickness.Size = new System.Drawing.Size(94, 15);
+            this.labelPointThickness.Size = new System.Drawing.Size(84, 13);
             this.labelPointThickness.TabIndex = 6;
             this.labelPointThickness.Text = "Толщина точек";
             // 
             // labelPointThicknessValue
             // 
             this.labelPointThicknessValue.AutoSize = true;
-            this.labelPointThicknessValue.Location = new System.Drawing.Point(103, 0);
+            this.labelPointThicknessValue.Location = new System.Drawing.Point(93, 0);
             this.labelPointThicknessValue.Name = "labelPointThicknessValue";
-            this.labelPointThicknessValue.Size = new System.Drawing.Size(14, 15);
+            this.labelPointThicknessValue.Size = new System.Drawing.Size(13, 13);
             this.labelPointThicknessValue.TabIndex = 7;
             this.labelPointThicknessValue.Text = "1";
             // 
             // trackBarPointThickness
             // 
-            this.trackBarPointThickness.Location = new System.Drawing.Point(3, 24);
+            this.trackBarPointThickness.Location = new System.Drawing.Point(3, 22);
             this.trackBarPointThickness.Maximum = 20;
             this.trackBarPointThickness.Minimum = 5;
             this.trackBarPointThickness.Name = "trackBarPointThickness";
-            this.trackBarPointThickness.Size = new System.Drawing.Size(152, 56);
+            this.trackBarPointThickness.Size = new System.Drawing.Size(152, 45);
             this.trackBarPointThickness.SmallChange = 3;
             this.trackBarPointThickness.TabIndex = 3;
             this.trackBarPointThickness.TickFrequency = 3;
@@ -386,7 +386,7 @@
             // 
             // chooseColor
             // 
-            this.chooseColor.Location = new System.Drawing.Point(167, 3);
+            this.chooseColor.Location = new System.Drawing.Point(3, 79);
             this.chooseColor.Name = "chooseColor";
             this.chooseColor.Size = new System.Drawing.Size(125, 23);
             this.chooseColor.TabIndex = 12;
@@ -426,7 +426,7 @@
             this.labelChooseGroup.AutoSize = true;
             this.labelChooseGroup.Location = new System.Drawing.Point(8, 10);
             this.labelChooseGroup.Name = "labelChooseGroup";
-            this.labelChooseGroup.Size = new System.Drawing.Size(91, 15);
+            this.labelChooseGroup.Size = new System.Drawing.Size(82, 13);
             this.labelChooseGroup.TabIndex = 2;
             this.labelChooseGroup.Text = "Выбор группы:";
             // 
@@ -435,7 +435,7 @@
             this.comboBoxGroups.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxGroups.FormattingEnabled = true;
-            this.comboBoxGroups.Location = new System.Drawing.Point(8, 28);
+            this.comboBoxGroups.Location = new System.Drawing.Point(8, 26);
             this.comboBoxGroups.Name = "comboBoxGroups";
             this.comboBoxGroups.Size = new System.Drawing.Size(132, 21);
             this.comboBoxGroups.TabIndex = 1;
@@ -446,7 +446,7 @@
             this.flowLayoutPanel2.AutoSize = true;
             this.flowLayoutPanel2.Controls.Add(this.buttonNewGroup);
             this.flowLayoutPanel2.Controls.Add(this.buttonDeleteGroup);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(5, 55);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(5, 53);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(138, 29);
@@ -475,9 +475,9 @@
             // checkBoxDeletePointMode
             // 
             this.checkBoxDeletePointMode.AutoSize = true;
-            this.checkBoxDeletePointMode.Location = new System.Drawing.Point(8, 90);
+            this.checkBoxDeletePointMode.Location = new System.Drawing.Point(8, 88);
             this.checkBoxDeletePointMode.Name = "checkBoxDeletePointMode";
-            this.checkBoxDeletePointMode.Size = new System.Drawing.Size(122, 19);
+            this.checkBoxDeletePointMode.Size = new System.Drawing.Size(107, 17);
             this.checkBoxDeletePointMode.TabIndex = 8;
             this.checkBoxDeletePointMode.Text = "Удаление точек";
             this.checkBoxDeletePointMode.UseVisualStyleBackColor = true;
