@@ -1,17 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DrawDots.Models;
 using Newtonsoft.Json;
 using SharpGL;
-using SharpGL.SceneGraph.Assets;
 
 namespace DrawDots
 {
@@ -35,7 +29,7 @@ namespace DrawDots
         {
             OpenGL gl = this.openGLWindow.OpenGL;
             gl.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT);
-            gl.Enable(OpenGL.GL_POINT_SMOOTH);
+            //gl.Enable(OpenGL.GL_POINT_SMOOTH);
             gl.MatrixMode(SharpGL.Enumerations.MatrixMode.Projection);
             gl.LoadIdentity();
             gl.Ortho2D(0, openGLWindow.Size.Width, 0, openGLWindow.Size.Height);
@@ -46,6 +40,12 @@ namespace DrawDots
                 {
                     gl.PointSize(group.groupThickness);
                     gl.Begin(OpenGL.GL_POINTS);
+
+                    gl.Color(group.groupColor.R, group.groupColor.G, group.groupColor.B);
+                    gl.Vertex(
+                            group.elements[0].x + Groups[comboBoxGroups.SelectedIndex].transformation.xTransition,
+                            group.elements[0].y + Groups[comboBoxGroups.SelectedIndex].transformation.yTransition
+                            );
 
                     if (group == comboBoxGroups.SelectedItem)
                     {

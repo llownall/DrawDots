@@ -87,7 +87,7 @@ namespace DrawDots.Models
         public List<MyPoint> rotatedElements()
         {
             List<MyPoint> result = new List<MyPoint>();
-            foreach (MyPoint point in elements)
+            foreach (MyPoint point in elements.Skip(1))
             {
                 int _x = point.x - elements[0].x;
                 int _y = point.y - elements[0].y;
